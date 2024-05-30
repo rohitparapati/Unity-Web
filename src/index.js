@@ -16,6 +16,9 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
     res.render("login");
 });
+app.get("/signup", (req, res)=>{
+    res.render("signup");
+});
 
 const port=3001;
 app.listen(port, () => {
