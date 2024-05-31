@@ -19,7 +19,10 @@ app.get("/", (req, res) => {
 app.get("/signup", (req, res)=>{
     res.render("signup");
 });
-
+// Add route for home page
+app.get("/home", (req, res) => {
+    res.render("home");
+});
 const port=3001;
 app.listen(port, () => {
     console.log(`Server Running on port: ${port}`);
