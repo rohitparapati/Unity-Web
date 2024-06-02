@@ -1,8 +1,10 @@
+const { sendConfirmationEmail } = require('./confirmationmail');
 const express=require('express')
 const path = require("path");
 const bcrypt=require('bcrypt')
 const User=require("./config");
 const app= express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
@@ -25,6 +27,7 @@ app.post("/signup", async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ name: username, email, password: hashedPassword });
         await newUser.save();
+        sendConfirmationEmail(email, username);
         res.send("<script>alert('User created successfully, you can now login.'); window.location='/';</script>");
     }
 });
