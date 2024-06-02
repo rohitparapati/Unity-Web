@@ -16,7 +16,9 @@ mongoose.connect("mongodb+srv://rgangineni:ravalihema@practicecluster.b6bg5cq.mo
 const UserSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    resetPasswordToken: String,  // Token used for resetting password
+    resetPasswordExpires: Date   // Expiry date of the reset token
 });
 
 // Create a model
