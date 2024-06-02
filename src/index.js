@@ -1,4 +1,3 @@
-
 const express = require('express');
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
@@ -18,7 +17,6 @@ let transporter = nodemailer.createTransport({
         pass: "wwjh nosu cvwo sqjz"
     }
 });
-
 
 app.get("/", (req, res) => {
     res.render("login");
@@ -84,13 +82,13 @@ app.post('/forgot-password', async (req, res) => {
         await user.save();
 
         // Make sure to include the userId in the reset link
-        const resetUrl = http://${req.headers.host}/reset-password/${resetToken}?userId=${user._id};
+        const resetUrl = `http://${req.headers.host}/reset-password/${resetToken}?userId=${user._id}`;
 
         const mailOptions = {
             from: process.env.EMAIL_ADDRESS, // Sender address
             to: email, // Recipient's address
             subject: 'Password Reset Link',
-            text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account. Please click on the following link, or paste it into your browser to complete the process within one hour of receiving it: ${resetUrl}'
+            text: `You are receiving this because you (or someone else) have requested the reset of the password for your account. Please click on the following link, or paste it into your browser to complete the process within one hour of receiving it: ${resetUrl}`
         };
 
         transporter.sendMail(mailOptions, function(error, info){
@@ -108,10 +106,11 @@ app.post('/forgot-password', async (req, res) => {
     }
 });
 
+
 app.get('/reset-password/:token', (req, res) => {
     const { token } = req.params;
     // Assuming you send the userId in the query parameters or find it via the token
-    const userId = req.query.userId; // Make sure to send `userId` as a query parameter or decode it from the token
+    const userId = req.query.userId; // Make sure to send userId as a query parameter or decode it from the token
 
     if (!userId) {
         return res.status(404).send("Invalid request, user ID is required.");
@@ -121,6 +120,34 @@ app.get('/reset-password/:token', (req, res) => {
 });
 
 
+app.post('/reset-password', async (req, res) => {
+    const { userId, token, password } = req.body;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            console.error("No user found with the given ID.");
+            return res.status(404).send("User not found.");
+        }
+
+        const tokenIsValid = await bcrypt.compare(token, user.resetPasswordToken);
+        if (!tokenIsValid || user.resetPasswordExpires < Date.now()) {
+            console.error("Token is invalid or has expired.");
+            return res.status(400).send("Password reset token is invalid or has expired.");
+        }
+
+        user.password = await bcrypt.hash(password, 10);
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+        await user.save();
+
+        console.log("Password has been successfully updated.");
+        res.send("Your password has been updated successfully.");
+    } catch (error) {
+        console.error("Error updating password: ", error);
+        res.status(500).send("An error occurred while updating your password.");
+    }
+});
 
 
 const port = 3001;
