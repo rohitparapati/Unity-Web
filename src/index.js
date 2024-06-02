@@ -11,6 +11,13 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: "reddyvenkatasatyasivanagendrak@gmail.com",
+        pass: "wwjh nosu cvwo sqjz"
+    }
+});
 
 
 app.get("/", (req, res) => {
@@ -61,6 +68,45 @@ app.get('/forgot-password', (req, res) => {
     res.render('forgot-password');
 });
 
+app.post('/forgot-password', async (req, res) => {
+    const { email } = req.body;
+    try {
+        const user = await User.findOne({ email: email });
+        if (!user) {
+            return res.status(404).send("User with given email does not exist.");
+        }
+
+        const resetToken = crypto.randomBytes(20).toString('hex');
+        const hash = await bcrypt.hash(resetToken, 10);
+
+        user.resetPasswordToken = hash;
+        user.resetPasswordExpires = Date.now() + 3600000; // 1 hour to expire
+        await user.save();
+
+        // Make sure to include the userId in the reset link
+        const resetUrl = http://${req.headers.host}/reset-password/${resetToken}?userId=${user._id};
+
+        const mailOptions = {
+            from: process.env.EMAIL_ADDRESS, // Sender address
+            to: email, // Recipient's address
+            subject: 'Password Reset Link',
+            text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account. Please click on the following link, or paste it into your browser to complete the process within one hour of receiving it: ${resetUrl}'
+        };
+
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+                return res.status(500).send('Error sending email');
+            } else {
+                console.log('Email sent: ' + info.response);
+                res.send('A password reset link has been sent to your email.');
+            }
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while processing your request.');
+    }
+});
 
 app.get('/reset-password/:token', (req, res) => {
     const { token } = req.params;
