@@ -13,7 +13,7 @@ let transporter = nodemailer.createTransport({
 
 const sendConfirmationEmail = (email, name) => {
     const mailOptions = {
-        from: `"Your Site Name" <reddyvenkatasatyasivanagendrak@gmail.com>`, // sender address
+        from: `"Unity-Web" <reddyvenkatasatyasivanagendrak@gmail.com>`, // sender address
         to: email, // list of receivers
         subject: 'Welcome to Our App', // Subject line
         text: `Hi ${name}, thank you for registering at our site!`, // plain text body
