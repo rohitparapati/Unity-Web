@@ -1,49 +1,17 @@
-.login-page {
+/* Common styles for all pages */
+body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, #5b73d2, #d54444, #f2b83c);
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
     flex-direction: column;
 }
 
-.login-page .cover {
-    background-color: #004d40;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    width: 100%;
-}
-
-.login-page .navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 40px;
-}
-
-.login-page .logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.login-page .logo {
-    width: 100px;
-    height: auto;
-    margin-right: 10px;
-}
-
-.login-page .navigation nav a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-size: 1em;
-}
-
-.login-page .navigation nav a:hover {
-    text-decoration: underline;
+/* Login page styles */
+.login-page {
+    background: linear-gradient(45deg, #5b73d2, #d54444, #f2b83c);
 }
 
 .login-page .form-container {
@@ -122,3 +90,24 @@
 .login-page a:hover {
     text-decoration: underline;
 }
+
+/* Signup page styles */
+.signup-page {
+    background: linear-gradient(45deg, #73d25b, #d54444, #3cf2a8);
+}
+
+.signup-page .form-container {
+    background-color: #fff;
+    background: linear-gradient(45deg, #f4abf9, #d5d59d, #a2f2c5);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.signup-page h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
