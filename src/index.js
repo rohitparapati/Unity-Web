@@ -39,6 +39,8 @@ app.post("/signup", async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ name: username, email, password: hashedPassword });
         await newUser.save();
+        sendConfirmationEmail(email, username);
+        console.log('sendConfirmationEmail called for:', email);
         res.send("<script>alert('User created successfully, you can now login.'); window.location='/';</script>");
     } catch (error) {
         console.error(error);
