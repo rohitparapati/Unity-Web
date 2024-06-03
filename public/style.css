@@ -1,4 +1,4 @@
-body {
+.login-page {
     font-family: Arial, sans-serif;
     background: linear-gradient(45deg, #5b73d2, #d54444, #f2b83c);
     display: flex;
@@ -9,7 +9,7 @@ body {
     flex-direction: column;
 }
 
-.cover {
+.login-page .cover {
     background-color: #004d40;
     color: white;
     text-align: center;
@@ -17,36 +17,36 @@ body {
     width: 100%;
 }
 
-.navigation {
+.login-page .navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 40px;
 }
 
-.logo-container {
+.login-page .logo-container {
     display: flex;
     align-items: center;
 }
 
-.logo {
+.login-page .logo {
     width: 100px;
     height: auto;
     margin-right: 10px;
 }
 
-.navigation nav a {
+.login-page .navigation nav a {
     color: white;
     margin: 0 15px;
     text-decoration: none;
     font-size: 1em;
 }
 
-.navigation nav a:hover {
+.login-page .navigation nav a:hover {
     text-decoration: underline;
 }
 
-.form-container {
+.login-page .form-container {
     background-color: #fff;
     background: linear-gradient(45deg, #abb9f4, #d59d9d, #f2c25a);
     padding: 20px;
@@ -56,24 +56,24 @@ body {
     text-align: center;
 }
 
-h2 {
+.login-page h2 {
     margin-bottom: 20px;
     color: #333;
 }
 
-.form-group {
+.login-page .form-group {
     margin-bottom: 15px;
     text-align: left;
 }
 
-label {
+.login-page label {
     display: block;
     margin-bottom: 5px;
     color: #333;
 }
 
-input[type="text"],
-input[type="password"] {
+.login-page input[type="text"],
+.login-page input[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #f3eded;
@@ -82,19 +82,19 @@ input[type="password"] {
     margin-bottom: 10px;
 }
 
-input[type="text"]::placeholder,
-input[type="password"]::placeholder {
+.login-page input[type="text"]::placeholder,
+.login-page input[type="password"]::placeholder {
     color: #626161;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
+.login-page input[type="text"]:focus,
+.login-page input[type="password"]:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
 }
 
-.submit-btn {
+.login-page .submit-btn {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -105,20 +105,20 @@ input[type="password"]:focus {
     font-size: 16px;
 }
 
-.submit-btn:hover {
+.login-page .submit-btn:hover {
     background-color: #0056b3;
 }
 
-p {
+.login-page p {
     margin-top: 15px;
     color: #666;
 }
 
-a {
+.login-page a {
     color: #007bff;
     text-decoration: none;
 }
 
-a:hover {
+.login-page a:hover {
     text-decoration: underline;
 }
