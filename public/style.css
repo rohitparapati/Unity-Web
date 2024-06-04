@@ -67,7 +67,6 @@ main {
     list-style-type: none;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
 }
@@ -157,8 +156,8 @@ main {
     color: #626161;
 }
 
-.login-page input[type="text"]:focus, .login-page input[type="password"]:focus,
-.signup-page input[type="text"]:focus, .signup-page input[type="email"]:focus, .signup-page input[type="password"]:focus {
+.login-page input[type="text"]:focus,
+.login-page input[type="password"]:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
@@ -191,6 +190,18 @@ main {
 
 .login-page a:hover, .signup-page a:hover {
     text-decoration: underline;
+}
+
+.login-page .logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-page .logo {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
 }
 
 .login-page .logo-container, .signup-page .logo-container {
@@ -294,6 +305,6 @@ footer {
 
 .left {
     font-size: 0.9em;
-    opacity: 0.8;
+    opacity: 0.8;
 }
 
