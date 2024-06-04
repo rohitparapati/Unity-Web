@@ -1,20 +1,122 @@
 /* Common styles for all pages */
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
+    font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     flex-direction: column;
+    align-items: center;
+    background-color: #f0f4f8; /* Light grey background */
+    color: #333;
+}
+
+main {
+    width: 100%;
+    flex: 1;
+}
+
+/* Home section */
+.home-page {
+    background-color: #2c3e50; /* Solid background color for the home section */
+    padding: 100px 20px;
+    text-align: center;
+    color: #fff; /* White text color for contrast */
+}
+
+.home-page h1 {
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
+
+.home-page p {
+    margin-bottom: 30px;
+    font-size: 1.2em;
+}
+
+.home-page .btn {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.home-page .btn:hover {
+    background-color: #2980b9;
+}
+
+
+/* Services section */
+#services {
+    background-color: #fff; /* White background for the services section */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#services h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 2em;
+}
+
+#services ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+#services li {
+    background-color: #ecf0f1; /* Light grey background for the service items */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1 1 200px;
+    max-width: 200px;
+}
+
+#services img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+}
+
+.service-link {
+    display: block;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.service-link:hover {
+    background-color: #2980b9;
 }
 
 /* Login page styles */
-.login-page {
+.login-page, .signup-page {
     background: linear-gradient(45deg, #5b73d2, #d54444, #f2b83c);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.login-page .form-container {
+.login-page .form-container, .signup-page .form-container {
     background-color: #fff;
     background: linear-gradient(45deg, #abb9f4, #d59d9d, #f2c25a);
     padding: 20px;
@@ -24,24 +126,24 @@ body {
     text-align: center;
 }
 
-.login-page h2 {
+.login-page h2, .signup-page h2 {
     margin-bottom: 20px;
     color: #333;
 }
 
-.login-page .form-group {
+.login-page .form-group, .signup-page .form-group {
     margin-bottom: 15px;
     text-align: left;
 }
 
-.login-page label {
+.login-page label, .signup-page label {
     display: block;
     margin-bottom: 5px;
     color: #333;
 }
 
-.login-page input[type="text"],
-.login-page input[type="password"] {
+.login-page input[type="text"], .login-page input[type="password"],
+.signup-page input[type="text"], .signup-page input[type="email"], .signup-page input[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #f3eded;
@@ -50,19 +152,19 @@ body {
     margin-bottom: 10px;
 }
 
-.login-page input[type="text"]::placeholder,
-.login-page input[type="password"]::placeholder {
+.login-page input[type="text"]::placeholder, .login-page input[type="password"]::placeholder,
+.signup-page input[type="text"]::placeholder, .signup-page input[type="email"]::placeholder, .signup-page input[type="password"]::placeholder {
     color: #626161;
 }
 
-.login-page input[type="text"]:focus,
-.login-page input[type="password"]:focus {
+.login-page input[type="text"]:focus, .login-page input[type="password"]:focus,
+.signup-page input[type="text"]:focus, .signup-page input[type="email"]:focus, .signup-page input[type="password"]:focus {
     border-color: #007bff;
     outline: none;
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
 }
 
-.login-page .submit-btn {
+.login-page .submit-btn, .signup-page .submit-btn {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -73,24 +175,35 @@ body {
     font-size: 16px;
 }
 
-.login-page .submit-btn:hover {
+.login-page .submit-btn:hover, .signup-page .submit-btn:hover {
     background-color: #0056b3;
 }
 
-.login-page p {
+.login-page p, .signup-page p {
     margin-top: 15px;
     color: #666;
 }
 
-.login-page a {
+.login-page a, .signup-page a {
     color: #007bff;
     text-decoration: none;
 }
 
-.login-page a:hover {
+.login-page a:hover, .signup-page a:hover {
     text-decoration: underline;
 }
 
+.login-page .logo-container, .signup-page .logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-page .logo, .signup-page .logo {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
 /* Signup page styles */
 .signup-page {
     background: linear-gradient(45deg, #73d25b, #d54444, #3cf2a8);
@@ -161,11 +274,10 @@ body {
 .signup-page .submit-btn:hover {
     background-color: #0056b3;
 }
-
 footer {
     width: 100%;
-    padding: 10px 20px;
-    background-color: #560; /* Dark background for footer */
+    padding: 3px 20px;
+    background-color: rgba(66, 0, 102, 0.096); /* Dark background for footer */
     color: white;
     text-align: center;
     position: fixed;
@@ -184,3 +296,4 @@ footer {
     font-size: 0.9em;
     opacity: 0.8;
 }
+
