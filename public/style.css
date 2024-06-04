@@ -111,3 +111,76 @@ body {
     color: #333;
 }
 
+.signup-page .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.signup-page label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.signup-page input[type="text"],
+.signup-page input[type="email"],
+.signup-page input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f3eded;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.signup-page input[type="text"]::placeholder,
+.signup-page input[type="email"]::placeholder,
+.signup-page input[type="password"]::placeholder {
+    color: #626161;
+}
+
+.signup-page input[type="text"]:focus,
+.signup-page input[type="email"]:focus,
+.signup-page input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.6);
+}
+
+.signup-page .submit-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.signup-page .submit-btn:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #560; /* Dark background for footer */
+    color: white;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center; /* Centers the content in the footer */
+    align-items: center;
+    flex-direction: column; /* Stacks content vertically */
+}
+
+.left {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
