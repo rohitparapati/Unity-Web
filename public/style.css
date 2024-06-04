@@ -161,3 +161,26 @@ body {
 .signup-page .submit-btn:hover {
     background-color: #0056b3;
 }
+
+footer {
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #560; /* Dark background for footer */
+    color: white;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center; /* Centers the content in the footer */
+    align-items: center;
+    flex-direction: column; /* Stacks content vertically */
+}
+
+.left {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
