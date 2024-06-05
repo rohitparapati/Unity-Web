@@ -67,12 +67,9 @@ main {
     list-style-type: none;
     padding: 0;
     display: flex;
-<<<<<<< HEAD
-=======
-    flex-direction: column;
-    align-items: center;
-    background-color: #f0f4f8; /* Light grey background */
-    color: #333;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:20px;
 }
 
 main {
@@ -131,7 +128,6 @@ main {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
->>>>>>> 1bf8feab91ce9e747be78b8e7f6887cfc919ede2
     justify-content: center;
     gap: 20px;
 }
@@ -221,7 +217,7 @@ main {
     color: #626161;
 }
 
-@login-page input[type="text"]:focus,
+.login-page input[type="text"]:focus,
 .login-page input[type="password"]:focus {
     border-color: #007bff;
     outline: none;
@@ -269,7 +265,6 @@ main {
     margin-right: 10px;
 }
 
-<<<<<<< HEAD
 .login-page .logo-container, .signup-page .logo-container {
     display: flex;
     align-items: center;
@@ -281,8 +276,7 @@ main {
     height: auto;
     margin-right: 10px;
 }
-=======
->>>>>>> 1bf8feab91ce9e747be78b8e7f6887cfc919ede2
+
 /* Signup page styles */
 .signup-page {
     background: linear-gradient(45deg, #73d25b, #d54444, #3cf2a8);
@@ -374,9 +368,5 @@ footer {
 .left {
     font-size: 0.9em;
     opacity: 0.8;
-<<<<<<< HEAD
-}
 
-=======
 }
->>>>>>> 1bf8feab91ce9e747be78b8e7f6887cfc919ede2
