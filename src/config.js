@@ -32,8 +32,34 @@ const serviceProviderSchema = new mongoose.Schema({
     experience: { type: Number, required: true }
 });
 
+const PlumbingSchema = new mongoose.Schema({
+    BusinessName: String,
+    Email: String,
+    Availability: String,
+    Location: String,
+    Contact: String,
+    Rating: String
+}, {
+    collection: 'plumbing'
+});
 
-// Create a model
+
+const ElectricalSchema = new mongoose.Schema({
+    BusinessName: String,
+    Email: String,
+    Contact: String,
+    Location: String,
+    Availability: String,
+    Serviceinfo: String,
+    rating:String
+}, {
+    collection: 'electrical'
+});
+
+// Create models
 const User = mongoose.model("User", UserSchema);
 const ServiceProvider = mongoose.model('ServiceProvider', serviceProviderSchema);
-module.exports={User, ServiceProvider};
+const Plumbing = mongoose.model('Plumbing', PlumbingSchema);
+const electrical = mongoose.model('electrical', ElectricalSchema);
+
+module.exports = { User, ServiceProvider, Plumbing, electrical };

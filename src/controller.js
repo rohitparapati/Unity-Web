@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
-const { User, ServiceProvider } = require('./config');
+const { User, ServiceProvider, Plumbing, electrical  } = require('./config'); // Correct import
 const { sendConfirmationEmail } = require('./confirmationmail');
 const nodemailer = require('nodemailer');
 
@@ -167,6 +167,29 @@ const registerServiceProvider = async (req, res) => {
     }
 };
 
+const plumbingservices = async (req, res) => {
+    try {
+        const plumbers = await Plumbing.find({});
+        console.log(plumbers); // Check what is being returned here
+        res.render("plumbing", { plumbers: plumbers });
+    } catch (error) {
+        console.error("Failed to fetch plumbing data:", error);
+        res.status(500).send("Failed to fetch plumbing data: " + error.message);
+    }
+};
+
+const electricalservices = async (req, res) => {
+    try {
+        const Electric = await electrical.find({});
+        console.log(Electric); // Check what is being returned here
+        res.render("electrical", { Electric: Electric });
+    } catch (error) {
+        console.error("Failed to fetch plumbing data:", error);
+        res.status(500).send("Failed to fetch plumbing data: " + error.message);
+    }
+};
+
+
 module.exports = {
     renderLogin,
     renderSignup,
@@ -177,5 +200,7 @@ module.exports = {
     renderResetPassword,
     resetPassword,
     renderRegister,
-    registerServiceProvider
+    registerServiceProvider,
+    plumbingservices,
+    electricalservices
 };

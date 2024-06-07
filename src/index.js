@@ -2,6 +2,7 @@ const express = require('express');
 const path = require("path");
 const app = express();
 
+
 const {
     renderLogin,
     renderSignup,
@@ -12,7 +13,9 @@ const {
     renderResetPassword,
     resetPassword,
     renderRegister,
-    registerServiceProvider
+    registerServiceProvider,
+    plumbingservices,
+    electricalservices
 } = require('./controller');
 
 app.use(express.json());
@@ -30,6 +33,8 @@ app.get('/reset-password/:token', renderResetPassword);
 app.post('/reset-password', resetPassword);
 app.get("/register", renderRegister);
 app.post("/register", registerServiceProvider);
+app.get("/plumbing", plumbingservices);
+app.get("/electrical", electricalservices);
 
 const port = 3002;
 app.listen(port, () => {
