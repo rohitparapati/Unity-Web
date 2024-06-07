@@ -76,13 +76,13 @@ const forgotPassword = async (req, res) => {
         user.resetPasswordExpires = Date.now() + 3600000; // 1 hour to expire
         await user.save();
 
-        const resetUrl = http://${req.headers.host}/reset-password/${resetToken}?userId=${user._id};
+        const resetUrl = `http://${req.headers.host}/reset-password/${resetToken}?userId=${user._id}`;
 
         const mailOptions = {
             from: "reddyvenkatasatyasivanagendrak@gmail.com",
             to: email,
             subject: 'Password Reset Link',
-            text: You are receiving this because you (or someone else) have requested the reset of the password for your account. Please click on the following link, or paste it into your browser to complete the process within one hour of receiving it: ${resetUrl}
+            text: `You are receiving this because you (or someone else) have requested the reset of the password for your account. Please click on the following link, or paste it into your browser to complete the process within one hour of receiving it: ${resetUrl}`
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
