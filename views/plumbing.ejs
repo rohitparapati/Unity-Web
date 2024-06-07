@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plumbing Services</title>
+</head>
+<body>
+    <h1>Plumbing Services</h1>
+    <ul>
+        <% plumbers.forEach(function(plumber) { %>
+            <li>
+                <strong>Business Name:</strong> <%= plumber.BusinessName %><br>
+                <strong>Email:</strong> <%= plumber.Email %><br>
+                <strong>Availability:</strong> <%= plumber.Availability %><br>
+                <strong>Location:</strong> <%= plumber.Location %><br>
+                <strong>Contact:</strong> <%= plumber.Contact %><br>
+                <strong>Rating:</strong> <%= plumber.Rating %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
