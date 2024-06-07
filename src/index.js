@@ -4,8 +4,9 @@ const path = require("path");
 const express = require('express');
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
-const User = require("./config"); // Make sure this module exports your Mongoose User model correctly
+const {User, ServiceProvider} = require("./config"); // Make sure this module exports your Mongoose User model correctly
 const nodemailer = require('nodemailer');
+const { Script } = require('vm');
 const app = express();
 
 app.use(express.json());
@@ -155,6 +156,37 @@ app.post('/reset-password', async (req, res) => {
 });
 
 
+
+app.get("/register", (req, res) => {
+    res.render("register");
+});
+
+app.post("/register", async (req, res) => {
+    const { businessname, email, typeofservice, availability, location, contact, experience } = req.body;
+
+    try {
+        const existingProvider = await ServiceProvider.findOne({ email });
+        if (existingProvider) {
+            return res.status(409).send("Email already in use. Please choose a different email.");
+        }
+
+        const newProvider = new ServiceProvider({
+            businessname,
+            email,
+            typeofservice,
+            availability,
+            location,
+            contact,
+            experience
+        });
+
+        await newProvider.save();
+       res.send("<Script>alert('registered successfully')</script>");
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("An error occurred while registering the service provider.");
+    }
+});
 const port = 3002;
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);

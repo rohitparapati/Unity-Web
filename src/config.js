@@ -21,6 +21,19 @@ const UserSchema = new mongoose.Schema({
     resetPasswordExpires: Date   // Expiry date of the reset token
 });
 
+
+const serviceProviderSchema = new mongoose.Schema({
+    businessname: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    typeofservice: { type: String, required: true },  // changed field name to typeofservice
+    availability: { type: String, required: true },
+    location: { type: String, required: true },
+    contact: { type: Number, required: true },
+    experience: { type: Number, required: true }
+});
+
+
 // Create a model
 const User = mongoose.model("User", UserSchema);
-module.exports=User;
+const ServiceProvider = mongoose.model('ServiceProvider', serviceProviderSchema);
+module.exports={User, ServiceProvider};

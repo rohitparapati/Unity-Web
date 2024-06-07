@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register for Services</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="register-page">
+    <main>
+        <h1>Register for Services</h1>
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label for="businessname">Business Name:</label>
+                <input type="text" id="businessname" name="businessname" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="typeofservice">Service Type:</label>
+                <select id="typeofservice" name="typeofservice" required>
+                    <option value="plumbing">Plumbing</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="carpentry">Carpentry</option>
+                    <option value="painting">Painting</option>
+                    <option value="cleaning">Cleaning</option>
+                    <option value="moving">Moving</option>
+                    <option value="landscaping">Landscaping</option>
+                    <option value="roofing">Roofing</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="availability">Availability:</label>
+                <input type="text" id="availability" name="availability" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required>
+            </div>
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input type="number" id="contact" name="contact" required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Years of Experience:</label>
+                <input type="number" id="experience" name="experience" min="0" required>
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </main>
+</body>
+</html>
