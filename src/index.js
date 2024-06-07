@@ -54,17 +54,17 @@ app.post("/login", async (req, res) => {
     try {
         const user = await User.findOne({ name: username });
         if (!user) {
-            return res.status(404).send("<script>alert('Username not found. Please try again.'); window.location='/login';</script>");
+            return res.status(404).send("<script>alert('Username not found. Please try again.'); window.location='/';</script>");
         }
         const isPasswordMatch = await bcrypt.compare(password, user.password);
         if (isPasswordMatch) {
             res.render("home"); // Assuming 'home.ejs' exists and is set up correctly
         } else {
-            res.status(401).send("<script>alert('Password is incorrect. Please try again.'); window.location='/login';</script>");
+            res.status(401).send("<script>alert('Password is incorrect. Please try again.'); window.location='/';</script>");
         }
     } catch (error) {
         console.error(error);
-        res.status(500).send("<script>alert('An error occurred. Please try again later.'); window.location='/login';</script>");
+        res.status(500).send("<script>alert('An error occurred. Please try again later.'); window.location='/';</script>");
     }
 });
 
