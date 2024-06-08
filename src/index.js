@@ -17,7 +17,8 @@ const {
     plumbingservices,
     electricalservices,
     carpentryservices,
-    paintingservices
+    paintingservices,
+    cleaningservices
 } = require('./controller');
 
 app.use(express.json());
@@ -39,6 +40,7 @@ app.get("/plumbing", plumbingservices);
 app.get("/electrical", electricalservices);
 app.get("/carpentry", carpentryservices);
 app.get("/painting", paintingservices);
+app.get("/cleaning", cleaningservices);
 const port = 3002;
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);

@@ -79,6 +79,17 @@ const paintingschema = new mongoose.Schema({
     collection: 'painting'
 });
 
+const cleaningschema = new mongoose.Schema({
+    ServiceName: String,
+    Email: String,
+    Contact: String,
+    Availability: String,
+    Location: String,
+    Rating:String
+}, {
+    collection: 'cleaning'
+});
+
 // Create models
 const User = mongoose.model("User", UserSchema);
 const ServiceProvider = mongoose.model('ServiceProvider', serviceProviderSchema);
@@ -86,4 +97,5 @@ const Plumbing = mongoose.model('Plumbing', PlumbingSchema);
 const electrical = mongoose.model('electrical', ElectricalSchema);
 const carpentry = mongoose.model('carpentry', carpentryschema);
 const painting = mongoose.model('painting', paintingschema);
-module.exports = { User, ServiceProvider, Plumbing, electrical, carpentry, painting};
+const cleaning = mongoose.model('cleaning', cleaningschema);
+module.exports = { User, ServiceProvider, Plumbing, electrical, carpentry, painting, cleaning};

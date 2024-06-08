@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cleaning Services</title>
+</head>
+<body>
+    <h1>Cleaning Services</h1>
+    <ul>
+        <% cleaners.forEach(function(cleaningfunction) { %>
+            <li>
+                <strong>Business Name:</strong> <%= cleaningfunction.ServiceName %><br>
+                <strong>Email:</strong> <%= cleaningfunction.Email %><br>
+                <strong>Contact:</strong> <%= cleaningfunction.Contact %><br>
+                <strong>Availability:</strong> <%= cleaningfunction.Availability %><br>
+                <strong>Location:</strong> <%= cleaningfunction.Location %><br>
+                <strong>Rating:</strong> <%= cleaningfunction.Rating %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>

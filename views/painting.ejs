@@ -7,6 +7,17 @@
 </head>
 <body>
     <h1>Painting Services</h1>
+
+    <form action="/painting" method="GET">
+        <label for="location">Filter by Location:</label>
+        <select name="location" id="location" onchange="this.form.submit()">
+            <option value="">All Locations</option>
+            <% locations.forEach(function(loc) { %>
+                <option value="<%= loc %>" <%= selectedLocation === loc ? 'selected' : '' %>><%= loc %></option>
+            <% }); %>
+        </select>
+    </form>
+
     <ul>
         <% paintvalue.forEach(function(paint) { %>
             <li>
@@ -15,7 +26,7 @@
                 <strong>Contact:</strong> <%= paint.Contact %><br>
                 <strong>Availability:</strong> <%= paint.Availability %><br>
                 <strong>Location:</strong> <%= paint.Location %><br>
-                <strong>Rating:</strong> <%= paint.Rating %>
+                <strong>Rating:</strong> <%= paint.rating %>
             </li>
         <% }); %>
     </ul>

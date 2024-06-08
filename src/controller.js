@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
-const { User, ServiceProvider, Plumbing, electrical, carpentry, painting } = require('./config'); // Correct import
+const { User, ServiceProvider, Plumbing, electrical, carpentry, painting, cleaning} = require('./config'); // Correct import
 const { sendConfirmationEmail } = require('./confirmationmail');
 const nodemailer = require('nodemailer');
 
@@ -201,15 +201,34 @@ const carpentryservices = async (req, res) => {
 };
 
 const paintingservices = async (req, res) => {
+    const { location } = req.query; // Get the location from query parameters
     try {
-        const paintvalue = await painting.find({});
+        let filter = {};
+        if (location) {
+            filter.Location = location;
+        }
+        const paintvalue = await painting.find(filter);
+        const locations = await painting.distinct("Location"); // Fetch unique locations
         console.log(paintvalue); // Check what is being returned here
-        res.render("painting", { paintvalue: paintvalue });
+        res.render("painting", { paintvalue: paintvalue, locations: locations, selectedLocation: location });
     } catch (error) {
         console.error("Failed to fetch painting data:", error);
         res.status(500).send("Failed to fetch painting data: " + error.message);
     }
 };
+
+
+const cleaningservices = async (req, res) => {
+    try {
+        const cleaners = await cleaning.find({});
+        console.log(cleaners); // Check what is being returned here
+        res.render("cleaning", { cleaners: cleaners });
+    } catch (error) {
+        console.error("Failed to fetch cleaning data:", error);
+        res.status(500).send("Failed to fetch cleaning data: " + error.message);
+    }
+};
+
 
 
 module.exports = {
@@ -226,5 +245,6 @@ module.exports = {
     plumbingservices,
     electricalservices,
     carpentryservices,
-    paintingservices
+    paintingservices,
+    cleaningservices
 };
