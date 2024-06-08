@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roofing Services</title>
+</head>
+<body>
+    <h1>Roofing Services</h1>
+    <ul>
+        <% roofs.forEach(function(roofvalue) { %>
+            <li>
+                <strong>Business Name:</strong> <%= roofvalue.ServiceName %><br>
+                <strong>Email:</strong> <%= roofvalue.Email %><br>
+                <strong>Contact:</strong> <%= roofvalue.Contact %><br>
+                <strong>Availability:</strong> <%= roofvalue.Availability %><br>
+                <strong>Location:</strong> <%= roofvalue.Location %><br>
+                <strong>Rating:</strong> <%= roofvalue.Rating %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
