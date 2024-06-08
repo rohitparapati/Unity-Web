@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painting Services</title>
+</head>
+<body>
+    <h1>Painting Services</h1>
+    <ul>
+        <% paintvalue.forEach(function(paint) { %>
+            <li>
+                <strong>Business Name:</strong> <%= paint.BusinessName %><br>
+                <strong>Email:</strong> <%= paint.Email %><br>
+                <strong>Contact:</strong> <%= paint.Contact %><br>
+                <strong>Availability:</strong> <%= paint.Availability %><br>
+                <strong>Location:</strong> <%= paint.Location %><br>
+                <strong>Rating:</strong> <%= paint.Rating %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>

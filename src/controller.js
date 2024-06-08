@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
-const { User, ServiceProvider, Plumbing, electrical  } = require('./config'); // Correct import
+const { User, ServiceProvider, Plumbing, electrical, carpentry, painting } = require('./config'); // Correct import
 const { sendConfirmationEmail } = require('./confirmationmail');
 const nodemailer = require('nodemailer');
 
@@ -184,8 +184,30 @@ const electricalservices = async (req, res) => {
         console.log(Electric); // Check what is being returned here
         res.render("electrical", { Electric: Electric });
     } catch (error) {
-        console.error("Failed to fetch plumbing data:", error);
-        res.status(500).send("Failed to fetch plumbing data: " + error.message);
+        console.error("Failed to fetch electric data:", error);
+        res.status(500).send("Failed to fetch electric data: " + error.message);
+    }
+};
+
+const carpentryservices = async (req, res) => {
+    try {
+        const carpentries = await carpentry.find({});
+        console.log(carpentries); // Check what is being returned here
+        res.render("carpentry", { carpentries: carpentries });
+    } catch (error) {
+        console.error("Failed to fetch carpentry data:", error);
+        res.status(500).send("Failed to fetch carpentry data: " + error.message);
+    }
+};
+
+const paintingservices = async (req, res) => {
+    try {
+        const paintvalue = await painting.find({});
+        console.log(paintvalue); // Check what is being returned here
+        res.render("painting", { paintvalue: paintvalue });
+    } catch (error) {
+        console.error("Failed to fetch painting data:", error);
+        res.status(500).send("Failed to fetch painting data: " + error.message);
     }
 };
 
@@ -202,5 +224,7 @@ module.exports = {
     renderRegister,
     registerServiceProvider,
     plumbingservices,
-    electricalservices
+    electricalservices,
+    carpentryservices,
+    paintingservices
 };

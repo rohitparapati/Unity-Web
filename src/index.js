@@ -15,7 +15,9 @@ const {
     renderRegister,
     registerServiceProvider,
     plumbingservices,
-    electricalservices
+    electricalservices,
+    carpentryservices,
+    paintingservices
 } = require('./controller');
 
 app.use(express.json());
@@ -35,7 +37,8 @@ app.get("/register", renderRegister);
 app.post("/register", registerServiceProvider);
 app.get("/plumbing", plumbingservices);
 app.get("/electrical", electricalservices);
-
+app.get("/carpentry", carpentryservices);
+app.get("/painting", paintingservices);
 const port = 3002;
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);

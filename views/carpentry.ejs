@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpentry Services</title>
+</head>
+<body>
+    <h1>Carpentry Services</h1>
+    <ul>
+        <% carpentries.forEach(function(carpentryvalue) { %>
+            <li>
+                <strong>Business Name:</strong> <%= carpentryvalue.ServiceName %><br>
+                <strong>Email:</strong> <%= carpentryvalue.Email %><br>
+                <strong>Contact:</strong> <%= carpentryvalue.Contact %><br>
+                <strong>Availability:</strong> <%= carpentryvalue.Availability %><br>
+                <strong>Service Information:</strong> <%= carpentryvalue.Serviceinformation %><br>
+                <strong>Location:</strong> <%= carpentryvalue.Location %><br>
+                <strong>Rating:</strong> <%= carpentryvalue.Rating %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
