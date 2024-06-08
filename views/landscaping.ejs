@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landscaping Services</title>
+</head>
+<body>
+    <h1>Landscaping Services</h1>
+    <ul>
+        <% lands.forEach(function(landvalue) { %>
+            <li>
+                <strong>Business Name:</strong> <%= landvalue.ServiceName %><br>
+                <strong>Email:</strong> <%= landvalue.Email %><br>
+                <strong>Contact:</strong> <%= landvalue.Contact %><br>
+                <strong>Availability:</strong> <%= landvalue.Availability %><br>
+                <strong>Location:</strong> <%= landvalue.Location %><br>
+                <strong>Rating:</strong> <%= landvalue.Rating %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
