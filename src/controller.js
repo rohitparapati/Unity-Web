@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
-const { User, ServiceProvider, Plumbing, electrical, carpentry, painting, cleaning} = require('./config'); // Correct import
+const { User, ServiceProvider, Plumbing, electrical, carpentry, painting, cleaning, moving} = require('./config'); // Correct import
 const { sendConfirmationEmail } = require('./confirmationmail');
 const nodemailer = require('nodemailer');
 
@@ -229,6 +229,16 @@ const cleaningservices = async (req, res) => {
     }
 };
 
+const movingservices = async (req, res) => {
+    try {
+        const movers = await moving.find({});
+        console.log(movers); // Check what is being returned here
+        res.render("moving", { movers: movers });
+    } catch (error) {
+        console.error("Failed to fetch Moving data:", error);
+        res.status(500).send("Failed to fetch Moving data: " + error.message);
+    }
+};
 
 
 module.exports = {
@@ -246,5 +256,6 @@ module.exports = {
     electricalservices,
     carpentryservices,
     paintingservices,
-    cleaningservices
+    cleaningservices,
+    movingservices
 };

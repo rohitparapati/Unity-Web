@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Services</title>
+</head>
+<body>
+    <h1>Moving Services</h1>
+    <ul>
+        <% movers.forEach(function(movingvalue) { %>
+            <li>
+                <strong>Business Name:</strong> <%= movingvalue.ServiceName %><br>
+                <strong>Email:</strong> <%= movingvalue.Email %><br>
+                <strong>Contact:</strong> <%= movingvalue.Contact %><br>
+                <strong>Availability:</strong> <%= movingvalue.Availability %><br>
+                <strong>Location:</strong> <%= movingvalue.Location %><br>
+                <strong>Rating:</strong> <%= movingvalue.Rating %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
