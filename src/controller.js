@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
-const { User, ServiceProvider, Plumbing, electrical, carpentry, painting, cleaning, moving, landscaping, Roofing} = require('./config'); // Correct import
+const { User, ServiceProvider, Plumbing, electrical, carpentry, painting, cleaning, moving, landscaping, Roofing, Other} = require('./config'); // Correct import
 const { sendConfirmationEmail } = require('./confirmationmail');
 const nodemailer = require('nodemailer');
 
@@ -306,6 +306,18 @@ const roofingservices = async (req, res) => {
     }
 };
 
+const otherservices = async (req, res) => {
+    try {
+        const others = await Other.find({});  // Correct model name
+        console.log(others); // Check what is being returned here
+        res.render("other", { others: others });
+    } catch (error) {
+        console.error("Failed to fetch other service data:", error);
+        res.status(500).send("Failed to fetch other service data: " + error.message);
+    }
+};
+
+
 
 module.exports = {
     renderLogin,
@@ -325,5 +337,6 @@ module.exports = {
     cleaningservices,
     movingservices,
     landscapingservices,
-    roofingservices
+    roofingservices,
+    otherservices
 };
