@@ -38,14 +38,14 @@ const PlumbingSchema = new mongoose.Schema({
     Availability: String,
     Location: String,
     Contact: String,
-    Rating: String
+    rating: String
 }, {
     collection: 'plumbing'
 });
 
 
 const ElectricalSchema = new mongoose.Schema({
-    BusinessName: String,
+    BussinessName: String,
     Email: String,
     Contact: String,
     Location: String,

@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plumbing Services</title>
+    <link rel="stylesheet" href="/style.css">
+    <script>
+        function togglePopup(id) {
+            const popup = document.getElementById(id);
+            const overlay = document.getElementById('overlay');
+            if (popup.style.display === "none" || popup.style.display === "") {
+                popup.style.display = "block";
+                overlay.style.display = "block";
+            } else {
+                popup.style.display = "none";
+                overlay.style.display = "none";
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="service-list">
+    <div id="overlay"></div>
+
     <h1>Plumbing Services</h1>
+
     <form action="/plumbing" method="GET">
         <label for="location">Filter by Location:</label>
         <select name="location" id="location" onchange="this.form.submit()">
@@ -16,17 +33,31 @@
             <% }); %>
         </select>
     </form>
-    <ul>
-        <% plumbers.forEach(function(plumber) { %>
-            <li>
-                <strong>Business Name:</strong> <%= plumber.BusinessName %><br>
-                <strong>Email:</strong> <%= plumber.Email %><br>
-                <strong>Availability:</strong> <%= plumber.Availability %><br>
-                <strong>Location:</strong> <%= plumber.Location %><br>
-                <strong>Contact:</strong> <%= plumber.Contact %><br>
-                <strong>Rating:</strong> <%= plumber.Rating %>
-            </li>
-        <% }); %>
-    </ul>
+
+    <main id="services">
+        <ul>
+            <% plumbers.forEach(function(plumber) { %>
+                <li>
+                    <img src="/images/provider.jpg" alt="Provider Image">
+                    <div class="content">
+                        <h3><%= plumber.BusinessName %></h3>
+                        <p><strong>Location:</strong> <%= plumber.Location %></p>
+                        <p><strong>Rating:</strong> <%= plumber.rating %></p>
+                        <button class="service-link" onclick="togglePopup('popup-<%= plumber._id %>')">View Details</button>
+                    </div>
+                    <div id="popup-<%= plumber._id %>" class="popup">
+                        <h3><%= plumber.BusinessName %></h3>
+                        <p><strong>Email:</strong> <%= plumber.Email %></p>
+                        <p><strong>Contact:</strong> <%= plumber.Contact %></p>
+                        <p><strong>Availability:</strong> <%= plumber.Availability %></p>
+                        <% if (plumber.Serviceinfo) { %>
+                            <p><strong>Service Information:</strong> <%= plumber.Serviceinfo %></p>
+                        <% } %>
+                        <button class="service-link" onclick="togglePopup('popup-<%= plumber._id %>')">Close</button>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
 </body>
 </html>

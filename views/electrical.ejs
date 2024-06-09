@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electronic Services</title>
+    <title>Electrical Services</title>
+    <link rel="stylesheet" href="/style.css">
+    <script>
+        function togglePopup(id) {
+            const popup = document.getElementById(id);
+            const overlay = document.getElementById('overlay');
+            if (popup.style.display === "none" || popup.style.display === "") {
+                popup.style.display = "block";
+                overlay.style.display = "block";
+            } else {
+                popup.style.display = "none";
+                overlay.style.display = "none";
+            }
+        }
+    </script>
 </head>
-<body>
-    <h1>Electronic Services</h1>
+<body class="service-list">
+    <div id="overlay"></div>
+
+    <h1>Electrical Services</h1>
+
     <form action="/electrical" method="GET">
         <label for="location">Filter by Location:</label>
         <select name="location" id="location" onchange="this.form.submit()">
@@ -16,18 +33,29 @@
             <% }); %>
         </select>
     </form>
-    <ul>
-        <% Electric.forEach(function(electronic) { %>
-            <li>
-                <strong>Business Name:</strong> <%= electronic.BusinessName %><br>
-                <strong>Email:</strong> <%= electronic.Email %><br>
-                <strong>Contact:</strong> <%= electronic.Contact %><br>
-                <strong>Location:</strong> <%= electronic.Location %><br>
-                <strong>Availability:</strong> <%= electronic.Availability %><br>
-                <strong>Service Information:</strong> <%= electronic.Serviceinfo%><br>
-                <strong>Rating:</strong> <%= electronic.rating%>
-            </li>
-        <% }); %>
-    </ul>
+
+    <main id="services">
+        <ul>
+            <% Electric.forEach(function(electronic) { %>
+                <li>
+                    <img src="/images/provider.jpg" alt="Provider Image">
+                    <div class="content">
+                        <h3><%= electronic.BussinessName %></h3>
+                        <p><strong>Location:</strong> <%= electronic.Location %></p>
+                        <p><strong>Rating:</strong> <%= electronic.rating %></p>
+                        <button class="service-link" onclick="togglePopup('popup-<%= electronic._id %>')">View Details</button>
+                    </div>
+                    <div id="popup-<%= electronic._id %>" class="popup">
+                        <h3><%= electronic.BussinessName %></h3>
+                        <p><strong>Email:</strong> <%= electronic.Email %></p>
+                        <p><strong>Contact:</strong> <%= electronic.Contact %></p>
+                        <p><strong>Availability:</strong> <%= electronic.Availability %></p>
+                        <p><strong>Service Information:</strong> <%= electronic.Serviceinfo %></p>
+                        <button class="service-link" onclick="togglePopup('popup-<%= electronic._id %>')">Close</button>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
 </body>
 </html>
