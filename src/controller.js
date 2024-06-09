@@ -179,10 +179,16 @@ const plumbingservices = async (req, res) => {
 };
 
 const electricalservices = async (req, res) => {
+    const { location } = req.query; // Get the location from query parameters
     try {
-        const Electric = await electrical.find({});
+        let filter = {};
+        if (location) {
+            filter.Location = location;
+        }
+        const Electric = await electrical.find(filter);
+        const locations = await electrical.distinct("Location");
         console.log(Electric); // Check what is being returned here
-        res.render("electrical", { Electric: Electric });
+        res.render("electrical", { Electric: Electric,locations: locations, selectedLocation: location });
     } catch (error) {
         console.error("Failed to fetch electric data:", error);
         res.status(500).send("Failed to fetch electric data: " + error.message);
@@ -197,7 +203,7 @@ const carpentryservices = async (req, res) => {
             filter.Location = location;
         }
         const carpentries = await carpentry.find(filter);
-        const locations = await painting.distinct("Location");
+        const locations = await carpentry.distinct("Location");
         console.log(carpentries); // Check what is being returned here
         res.render("carpentry", { carpentries: carpentries,locations: locations, selectedLocation: location });
     } catch (error) {
