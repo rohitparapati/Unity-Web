@@ -290,10 +290,16 @@ const landscapingservices = async (req, res) => {
 
 
 const roofingservices = async (req, res) => {
+    const { location } = req.query; // Get the location from query parameters
     try {
-        const roofs = await Roofing.find({});
+        let filter = {};
+        if (location) {
+            filter.Location = location;
+        }
+        const roofs = await Roofing.find(filter);
+        const locations = await Roofing.distinct("Location");
         console.log(roofs); // Check what is being returned here
-        res.render("roofing", { roofs: roofs });
+        res.render("roofing", { roofs: roofs ,locations: locations, selectedLocation: location});
     } catch (error) {
         console.error("Failed to fetch roofing data:", error);
         res.status(500).send("Failed to fetch roofing data: " + error.message);
