@@ -7,6 +7,18 @@
 </head>
 <body>
     <h1>Cleaning Services</h1>
+
+    <form action="/cleaning" method="GET">
+        <label for="location">Filter by Location:</label>
+        <select name="location" id="location" onchange="this.form.submit()">
+            <option value="">All Locations</option>
+            <% locations.forEach(function(loc) { %>
+                <option value="<%= loc %>" <%= selectedLocation === loc ? 'selected' : '' %>><%= loc %></option>
+            <% }); %>
+        </select>
+    </form>
+
+
     <ul>
         <% cleaners.forEach(function(cleaningfunction) { %>
             <li>

@@ -219,10 +219,16 @@ const paintingservices = async (req, res) => {
 
 
 const cleaningservices = async (req, res) => {
+    const { location } = req.query; // Get the location from query parameters
     try {
-        const cleaners = await cleaning.find({});
+        let filter = {};
+        if (location) {
+            filter.Location = location;
+        }
+        const cleaners = await cleaning.find(filter);
+        const locations = await cleaning.distinct("Location");
         console.log(cleaners); // Check what is being returned here
-        res.render("cleaning", { cleaners: cleaners });
+        res.render("cleaning", { cleaners: cleaners,locations: locations, selectedLocation: location });
     } catch (error) {
         console.error("Failed to fetch cleaning data:", error);
         res.status(500).send("Failed to fetch cleaning data: " + error.message);
@@ -230,10 +236,16 @@ const cleaningservices = async (req, res) => {
 };
 
 const movingservices = async (req, res) => {
+    const { location } = req.query; // Get the location from query parameters
     try {
-        const movers = await moving.find({});
+        let filter = {};
+        if (location) {
+            filter.Location = location;
+        }
+        const movers = await moving.find(filter);
+        const locations = await moving.distinct("Location");
         console.log(movers); // Check what is being returned here
-        res.render("moving", { movers: movers });
+        res.render("moving", { movers: movers ,locations: locations, selectedLocation: location});
     } catch (error) {
         console.error("Failed to fetch Moving data:", error);
         res.status(500).send("Failed to fetch Moving data: " + error.message);
@@ -241,10 +253,16 @@ const movingservices = async (req, res) => {
 };
 
 const landscapingservices = async (req, res) => {
+    const { location } = req.query; // Get the location from query parameters
     try {
-        const lands = await landscaping.find({});
+        let filter = {};
+        if (location) {
+            filter.Location = location;
+        }
+        const lands = await landscaping.find(filter);
+        const locations = await landscaping.distinct("Location");
         console.log(lands); // Check what is being returned here
-        res.render("landscaping", { lands: lands });
+        res.render("landscaping", { lands: lands,locations: locations, selectedLocation: location });
     } catch (error) {
         console.error("Failed to fetch LandScaping data:", error);
         res.status(500).send("Failed to fetch landscaping data: " + error.message);
