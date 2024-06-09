@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Services</title>
+</head>
+<body>
+    <h1>List of Other Services</h1>
+    <ul>
+        <% others.forEach(function(othervalue) { %>
+            <li>
+                <strong>Business Name:</strong> <%= othervalue.ServiceName %><br>
+                <strong>Email:</strong> <%= othervalue.Email %><br>
+                <strong>Contact:</strong> <%= othervalue.Contact %><br>
+                <strong>Availability:</strong> <%= othervalue.Availability %><br>
+                <strong>Location:</strong> <%= othervalue.Location %><br>
+                <strong>Rating:</strong> <%= othervalue.Rating %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
