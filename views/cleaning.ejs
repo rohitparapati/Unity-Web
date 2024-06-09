@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cleaning Services</title>
+    <link rel="stylesheet" href="/style.css">
+    <script>
+        function togglePopup(id) {
+            const popup = document.getElementById(id);
+            const overlay = document.getElementById('overlay');
+            if (popup.style.display === "none" || popup.style.display === "") {
+                popup.style.display = "block";
+                overlay.style.display = "block";
+            } else {
+                popup.style.display = "none";
+                overlay.style.display = "none";
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="service-list">
+    <div id="overlay"></div>
+
     <h1>Cleaning Services</h1>
 
     <form action="/cleaning" method="GET">
@@ -18,18 +34,27 @@
         </select>
     </form>
 
-
-    <ul>
-        <% cleaners.forEach(function(cleaningfunction) { %>
-            <li>
-                <strong>Business Name:</strong> <%= cleaningfunction.ServiceName %><br>
-                <strong>Email:</strong> <%= cleaningfunction.Email %><br>
-                <strong>Contact:</strong> <%= cleaningfunction.Contact %><br>
-                <strong>Availability:</strong> <%= cleaningfunction.Availability %><br>
-                <strong>Location:</strong> <%= cleaningfunction.Location %><br>
-                <strong>Rating:</strong> <%= cleaningfunction.Rating %>
-            </li>
-        <% }); %>
-    </ul>
+    <main id="services">
+        <ul>
+            <% cleaners.forEach(function(cleaningfunction) { %>
+                <li>
+                    <img src="/images/provider.jpg" alt="Provider Image">
+                    <div class="content">
+                        <h3><%= cleaningfunction.ServiceName %></h3>
+                        <p><strong>Location:</strong> <%= cleaningfunction.Location %></p>
+                        <p><strong>Rating:</strong> <%= cleaningfunction.Rating %></p>
+                        <button class="service-link" onclick="togglePopup('popup-<%= cleaningfunction._id %>')">View Details</button>
+                    </div>
+                    <div id="popup-<%= cleaningfunction._id %>" class="popup">
+                        <h3><%= cleaningfunction.ServiceName %></h3>
+                        <p><strong>Email:</strong> <%= cleaningfunction.Email %></p>
+                        <p><strong>Contact:</strong> <%= cleaningfunction.Contact %></p>
+                        <p><strong>Availability:</strong> <%= cleaningfunction.Availability %></p>
+                        <button class="service-link" onclick="togglePopup('popup-<%= cleaningfunction._id %>')">Close</button>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
 </body>
 </html>
