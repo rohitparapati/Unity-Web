@@ -168,10 +168,16 @@ const registerServiceProvider = async (req, res) => {
 };
 
 const plumbingservices = async (req, res) => {
+    const { location } = req.query; // Get the location from query parameters
     try {
-        const plumbers = await Plumbing.find({});
+        let filter = {};
+        if (location) {
+            filter.Location = location;
+        }
+        const plumbers = await Plumbing.find(filter);
+        const locations = await Plumbing.distinct("Location");
         console.log(plumbers); // Check what is being returned here
-        res.render("plumbing", { plumbers: plumbers });
+        res.render("plumbing", { plumbers: plumbers,locations: locations, selectedLocation: location });
     } catch (error) {
         console.error("Failed to fetch plumbing data:", error);
         res.status(500).send("Failed to fetch plumbing data: " + error.message);
