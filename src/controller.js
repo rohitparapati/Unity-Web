@@ -307,10 +307,16 @@ const roofingservices = async (req, res) => {
 };
 
 const otherservices = async (req, res) => {
+    const { location } = req.query; // Get the location from query parameters
     try {
-        const others = await Other.find({});  // Correct model name
+        let filter = {};
+        if (location) {
+            filter.Location = location;
+        }
+        const others = await Other.find(filter);  // Correct model name
+        const locations = await Other.distinct("Location");
         console.log(others); // Check what is being returned here
-        res.render("other", { others: others });
+        res.render("other", { others: others,locations: locations, selectedLocation: location });
     } catch (error) {
         console.error("Failed to fetch other service data:", error);
         res.status(500).send("Failed to fetch other service data: " + error.message);
