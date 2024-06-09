@@ -8,7 +8,7 @@
 <body>
     <h1>Cleaning Services</h1>
 
-    <form action="/painting" method="GET">
+    <form action="/cleaning" method="GET">
         <label for="location">Filter by Location:</label>
         <select name="location" id="location" onchange="this.form.submit()">
             <option value="">All Locations</option>
@@ -18,7 +18,7 @@
         </select>
     </form>
 
-    
+
     <ul>
         <% cleaners.forEach(function(cleaningfunction) { %>
             <li>

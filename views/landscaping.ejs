@@ -7,6 +7,15 @@
 </head>
 <body>
     <h1>Landscaping Services</h1>
+    <form action="/landscaping" method="GET">
+        <label for="location">Filter by Location:</label>
+        <select name="location" id="location" onchange="this.form.submit()">
+            <option value="">All Locations</option>
+            <% locations.forEach(function(loc) { %>
+                <option value="<%= loc %>" <%= selectedLocation === loc ? 'selected' : '' %>><%= loc %></option>
+            <% }); %>
+        </select>
+    </form>
     <ul>
         <% lands.forEach(function(landvalue) { %>
             <li>
