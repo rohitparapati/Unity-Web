@@ -1,11 +1,16 @@
-const {loginUser ,registerServiceProvider} = require('./controller');
+const { signupUser, loginUser, registerServiceProvider, forgotPassword, otherservices } = require('./controller');
 const { User, ServiceProvider, Other } = require('./config');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
+const { sendConfirmationEmail } = require('./confirmationmail');
 
 jest.mock('./config', () => ({
-    User: function () { return { save: jest.fn() } }, // Mocking the save method
-    ServiceProvider: jest.fn(),
+    User: jest.fn(() => ({
+        save: jest.fn()
+    })),
+    ServiceProvider: jest.fn(() => ({
+        save: jest.fn()
+    })),
     Other: {
         find: jest.fn(),
         distinct: jest.fn()
@@ -102,6 +107,83 @@ describe('Controller', () => {
             expect(res.send).toHaveBeenCalledWith("<script>alert('Password is incorrect. Please try again.'); window.location='/login';</script>");
         });
     });
+
+    describe('signupUser', () => {
+        it('should create a new user successfully', async () => {
+            const req = {
+                body: {
+                    username: 'testuser',
+                    email: 'testuser@example.com',
+                    password: 'password123'
+                }
+            };
+            const res = {
+                send: jest.fn()
+            };
+    
+            User.findOne = jest.fn().mockResolvedValue(null);
+            bcrypt.hash.mockResolvedValue('hashedpassword');
+            const saveMock = jest.fn().mockResolvedValue({});
+            User.mockImplementation(() => ({
+                save: saveMock
+            }));
+    
+            await signupUser(req, res);
+    
+            expect(User.findOne).toHaveBeenCalledWith({ email: 'testuser@example.com' });
+            expect(bcrypt.hash).toHaveBeenCalledWith('password123', 10);
+            expect(saveMock).toHaveBeenCalled();
+            expect(sendConfirmationEmail).toHaveBeenCalledWith('testuser@example.com', 'testuser');
+            expect(res.send).toHaveBeenCalledWith("<script>alert('User created successfully, you can now login.'); window.location='/';</script>");
+        });
+    
+        it('should return 409 if email already in use', async () => {
+            const req = {
+                body: {
+                    username: 'testuser',
+                    email: 'testuser@example.com',
+                    password: 'password123'
+                }
+            };
+            const res = {
+                status: jest.fn().mockReturnThis(),
+                send: jest.fn()
+            };
+    
+            User.findOne = jest.fn().mockResolvedValue({ email: 'testuser@example.com' });
+    
+            await signupUser(req, res);
+    
+            expect(User.findOne).toHaveBeenCalledWith({ email: 'testuser@example.com' });
+            expect(res.status).toHaveBeenCalledWith(409);
+            expect(res.send).toHaveBeenCalledWith("Email already in use. Please choose a different email.");
+        });
+    
+        it('should return 500 if password hashing fails', async () => {
+            const req = {
+                body: {
+                    username: 'testuser',
+                    email: 'testuser@example.com',
+                    password: 'password123'
+                }
+            };
+            const res = {
+                status: jest.fn().mockReturnThis(),
+                send: jest.fn()
+            };
+    
+            User.findOne = jest.fn().mockResolvedValue(null);
+            bcrypt.hash.mockRejectedValue(new Error('Hashing failed'));
+    
+            await signupUser(req, res);
+    
+            expect(User.findOne).toHaveBeenCalledWith({ email: 'testuser@example.com' });
+            expect(bcrypt.hash).toHaveBeenCalledWith('password123', 10);
+            expect(res.status).toHaveBeenCalledWith(500);
+            expect(res.send).toHaveBeenCalledWith("An error occurred while creating your account.");
+        });
+    });
+
     describe('registerServiceProvider', () => {
         it('should register a new service provider successfully', async () => {
             const req = {
@@ -121,12 +203,15 @@ describe('Controller', () => {
             };
     
             ServiceProvider.findOne = jest.fn().mockResolvedValue(null);
-            ServiceProvider.prototype.save = jest.fn().mockResolvedValue({});
+            const saveMock = jest.fn().mockResolvedValue({});
+            ServiceProvider.mockImplementation(() => ({
+                save: saveMock
+            }));
     
             await registerServiceProvider(req, res);
     
             expect(ServiceProvider.findOne).toHaveBeenCalledWith({ email: 'serviceprovider@example.com' });
-            expect(ServiceProvider.prototype.save).toHaveBeenCalled();
+            expect(saveMock).toHaveBeenCalled();
             expect(res.send).toHaveBeenCalledWith("<script>alert('Registered successfully'); window.location='/login';</script>");
         });
     
@@ -174,16 +259,17 @@ describe('Controller', () => {
             };
     
             ServiceProvider.findOne = jest.fn().mockResolvedValue(null);
-            ServiceProvider.prototype.save = jest.fn().mockRejectedValue(new Error('Database save failed'));
+            const saveMock = jest.fn().mockRejectedValue(new Error('Database save failed'));
+            ServiceProvider.mockImplementation(() => ({
+                save: saveMock
+            }));
     
             await registerServiceProvider(req, res);
     
             expect(ServiceProvider.findOne).toHaveBeenCalledWith({ email: 'serviceprovider@example.com' });
-            expect(ServiceProvider.prototype.save).toHaveBeenCalled();
+            expect(saveMock).toHaveBeenCalled();
             expect(res.status).toHaveBeenCalledWith(500);
             expect(res.send).toHaveBeenCalledWith("An error occurred while registering the service provider.");
         });
     });
-    
-    
 });
