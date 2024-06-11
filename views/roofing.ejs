@@ -4,11 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roofing Services</title>
+    <link rel="stylesheet" href="/style.css">
+    <script>
+        function togglePopup(id) {
+            const popup = document.getElementById(id);
+            const overlay = document.getElementById('overlay');
+            if (popup.style.display === "none" || popup.style.display === "") {
+                popup.style.display = "block";
+                overlay.style.display = "block";
+            } else {
+                popup.style.display = "none";
+                overlay.style.display = "none";
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="service-list">
+    <div id="overlay"></div>
+
     <h1>Roofing Services</h1>
 
-    
     <form action="/roofing" method="GET">
         <label for="location">Filter by Location:</label>
         <select name="location" id="location" onchange="this.form.submit()">
@@ -18,17 +33,28 @@
             <% }); %>
         </select>
     </form>
-    <ul>
-        <% roofs.forEach(function(roofvalue) { %>
-            <li>
-                <strong>Business Name:</strong> <%= roofvalue.ServiceName %><br>
-                <strong>Email:</strong> <%= roofvalue.Email %><br>
-                <strong>Contact:</strong> <%= roofvalue.Contact %><br>
-                <strong>Availability:</strong> <%= roofvalue.Availability %><br>
-                <strong>Location:</strong> <%= roofvalue.Location %><br>
-                <strong>Rating:</strong> <%= roofvalue.Rating %>
-            </li>
-        <% }); %>
-    </ul>
+
+    <main id="services">
+        <ul>
+            <% roofs.forEach(function(roofvalue) { %>
+                <li>
+                    <img src="/images/provider.jpg" alt="Provider Image">
+                    <div class="content">
+                        <h3><%= roofvalue.ServiceName %></h3>
+                        <p><strong>Location:</strong> <%= roofvalue.Location %></p>
+                        <p><strong>Rating:</strong> <%= roofvalue.Rating %></p>
+                        <button class="service-link" onclick="togglePopup('popup-<%= roofvalue._id %>')">View Details</button>
+                    </div>
+                    <div id="popup-<%= roofvalue._id %>" class="popup">
+                        <h3><%= roofvalue.ServiceName %></h3>
+                        <p><strong>Email:</strong> <%= roofvalue.Email %></p>
+                        <p><strong>Contact:</strong> <%= roofvalue.Contact %></p>
+                        <p><strong>Availability:</strong> <%= roofvalue.Availability %></p>
+                        <button class="service-link" onclick="togglePopup('popup-<%= roofvalue._id %>')">Close</button>
+                    </div>
+                </li>
+            <% }); %>
+        </ul>
+    </main>
 </body>
 </html>
