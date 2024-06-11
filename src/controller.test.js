@@ -1,4 +1,4 @@
-const { signupUser, loginUser, registerServiceProvider, forgotPassword, otherservices } = require('./controller');
+const { signupUser, loginUser, registerServiceProvider,  otherservices } = require('./controller');
 const { User, ServiceProvider, Other } = require('./config');
 const bcrypt = require('bcrypt');
 const nodemailer = require('nodemailer');
@@ -270,6 +270,68 @@ describe('Controller', () => {
             expect(saveMock).toHaveBeenCalled();
             expect(res.status).toHaveBeenCalledWith(500);
             expect(res.send).toHaveBeenCalledWith("An error occurred while registering the service provider.");
+        });
+    });
+    describe('otherservices', () => {
+        it('should fetch services by location', async () => {
+            const req = {
+                query: {
+                    location: 'Test Location'
+                }
+            };
+            const res = {
+                render: jest.fn(),
+                status: jest.fn().mockReturnThis(),
+                send: jest.fn()
+            };
+    
+            Other.find = jest.fn().mockResolvedValue([{ ServiceName: 'Test Service', Location: 'Test Location' }]);
+            Other.distinct = jest.fn().mockResolvedValue(['Location1', 'Test Location']);
+    
+            await otherservices(req, res);
+    
+            expect(Other.find).toHaveBeenCalledWith({ Location: 'Test Location' });
+            expect(res.render).toHaveBeenCalledWith('other', { others: [{ ServiceName: 'Test Service', Location: 'Test Location' }], locations: ['Location1', 'Test Location'], selectedLocation: 'Test Location' });
+        });
+    
+        it('should fetch all services when no location specified', async () => {
+            const req = {
+                query: {}
+            };
+            const res = {
+                render: jest.fn(),
+                status: jest.fn().mockReturnThis(),
+                send: jest.fn()
+            };
+    
+            Other.find = jest.fn().mockResolvedValue([{ ServiceName: 'Test Service', Location: 'Test Location' }]);
+            Other.distinct = jest.fn().mockResolvedValue(['Location1', 'Test Location']);
+    
+            await otherservices(req, res);
+    
+            expect(Other.find).toHaveBeenCalledWith({});
+            expect(res.render).toHaveBeenCalledWith('other', { others: [{ ServiceName: 'Test Service', Location: 'Test Location' }], locations: ['Location1', 'Test Location'], selectedLocation: undefined });
+        });
+    
+        it('should render empty list if no services found for location', async () => {
+            const req = {
+                query: {
+                    location: 'Nonexistent Location'
+                }
+            };
+            const res = {
+                render: jest.fn(),
+                status: jest.fn().mockReturnThis(),
+                send: jest.fn()
+            };
+    
+            Other.find = jest.fn().mockResolvedValue([]);
+            Other.distinct = jest.fn().mockResolvedValue(['Location1', 'Test Location']);
+    
+            await otherservices(req, res);
+    
+            expect(Other.find).toHaveBeenCalledWith({ Location: 'Nonexistent Location' });
+            expect(res.render).toHaveBeenCalledWith('other', { others: [], locations: ['Location1', 'Test Location'], selectedLocation: 'Nonexistent Location' });
         });
     });
 });
