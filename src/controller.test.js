@@ -1,6 +1,6 @@
 const { signupUser, loginUser, registerServiceProvider,  otherservices } = require('./controller');
 const { User, ServiceProvider, Other } = require('./config');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const { sendConfirmationEmail } = require('./confirmationmail');
 

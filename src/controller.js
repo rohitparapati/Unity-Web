@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const { User, ServiceProvider, Plumbing, electrical, carpentry, painting, cleaning, moving, landscaping, Roofing, Other} = require('./config'); // Correct import
 const { sendConfirmationEmail } = require('./confirmationmail');
