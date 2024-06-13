@@ -5,6 +5,9 @@ const nodemailer = require('nodemailer');
 const { sendConfirmationEmail } = require('./confirmationmail');
 
 jest.mock('./config', () => ({
+
+
+    
     User: jest.fn(() => ({
         save: jest.fn()
     })),
@@ -16,7 +19,7 @@ jest.mock('./config', () => ({
         distinct: jest.fn()
 
 
-        
+
     }
 
 }));
