@@ -14,7 +14,11 @@ jest.mock('./config', () => ({
     Other: {
         find: jest.fn(),
         distinct: jest.fn()
+
+
+        
     }
+
 }));
 
 jest.mock('bcryptjs', () => ({
