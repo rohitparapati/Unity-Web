@@ -162,7 +162,8 @@ const registerServiceProvider = async (req, res) => {
 
         await newProvider.save();
         sendConfirmationEmail(email, businessname);
-        res.send("<script>alert('Registered successfully'); window.location='/login';</script>");
+        res.render('register-success', { businessname });
+        
     } catch (error) {
         console.error(error);
         res.status(500).send("An error occurred while registering the service provider.");
