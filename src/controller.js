@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
 const { User, ServiceProvider, Plumbing, electrical, carpentry, painting, cleaning, moving, landscaping, Roofing, Other} = require('./config'); // Correct import
 const { sendConfirmationEmail } = require('./confirmationmail');
+const { sendRegistrationEmail } = require('./registrationmail');
 const nodemailer = require('nodemailer');
 
 let transporter = nodemailer.createTransport({
@@ -160,6 +161,7 @@ const registerServiceProvider = async (req, res) => {
         });
 
         await newProvider.save();
+        sendConfirmationEmail(email, businessname);
         res.send("<script>alert('Registered successfully'); window.location='/login';</script>");
     } catch (error) {
         console.error(error);
