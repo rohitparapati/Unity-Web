@@ -35,27 +35,55 @@
     </form>
 
     <main id="services">
-        <ul>
-            <% carpentries.forEach(function(carpentryvalue) { %>
-                <li>
-                    <img src="/images/provider.jpg" alt="Provider Image">
-                    <div class="content">
-                        <h3><%= carpentryvalue.ServiceName %></h3>
-                        <p><strong>Location:</strong> <%= carpentryvalue.Location %></p>
-                        <p><strong>Rating:</strong> <%= carpentryvalue.Rating %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= carpentryvalue._id %>')">View Details</button>
-                    </div>
-                    <div id="popup-<%= carpentryvalue._id %>" class="popup">
-                        <h3><%= carpentryvalue.ServiceName %></h3>
-                        <p><strong>Email:</strong> <%= carpentryvalue.Email %></p>
-                        <p><strong>Contact:</strong> <%= carpentryvalue.Contact %></p>
-                        <p><strong>Availability:</strong> <%= carpentryvalue.Availability %></p>
-                        <p><strong>Service Information:</strong> <%= carpentryvalue.Serviceinformation %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= carpentryvalue._id %>')">Close</button>
-                    </div>
-                </li>
-            <% }); %>
-        </ul>
+        <div class="filtered-carpentry">
+            <h2>Filtered Carpentry Services</h2>
+            <ul>
+                <% carpentries.forEach(function(carpentryvalue) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= carpentryvalue.ServiceName %></h3>
+                            <p><strong>Location:</strong> <%= carpentryvalue.Location %></p>
+                            <p><strong>Rating:</strong> <%= carpentryvalue.Rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= carpentryvalue._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-<%= carpentryvalue._id %>" class="popup">
+                            <h3><%= carpentryvalue.ServiceName %></h3>
+                            <p><strong>Email:</strong> <%= carpentryvalue.Email %></p>
+                            <p><strong>Contact:</strong> <%= carpentryvalue.Contact %></p>
+                            <p><strong>Availability:</strong> <%= carpentryvalue.Availability %></p>
+                            <p><strong>Service Information:</strong> <%= carpentryvalue.Serviceinformation %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= carpentryvalue._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="highly-rated-carpentry">
+            <h2>Recommend services with high rating</h2>
+            <ul>
+                <% highlyRatedCarpentries.forEach(function(carpentryvalue) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= carpentryvalue.ServiceName %></h3>
+                            <p><strong>Location:</strong> <%= carpentryvalue.Location %></p>
+                            <p><strong>Rating:</strong> <%= carpentryvalue.Rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= carpentryvalue._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-high-<%= carpentryvalue._id %>" class="popup">
+                            <h3><%= carpentryvalue.ServiceName %></h3>
+                            <p><strong>Email:</strong> <%= carpentryvalue.Email %></p>
+                            <p><strong>Contact:</strong> <%= carpentryvalue.Contact %></p>
+                            <p><strong>Availability:</strong> <%= carpentryvalue.Availability %></p>
+                            <p><strong>Service Information:</strong> <%= carpentryvalue.Serviceinformation %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= carpentryvalue._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
     </main>
 </body>
 </html>

@@ -535,3 +535,35 @@ footer {
 .spacer {
     height: 50px; /* Adjust this value to increase or decrease the space */
 }
+
+/* Styles for Filtered Carpentry Services Section */
+.filtered-carpentry {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-carpentry h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Carpentry Services Section */
+.highly-rated-carpentry {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-carpentry h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Additional CSS to add spacing between sections */
+.spacer {
+    height: 50px; /* Adjust this value to increase or decrease the space */
+}

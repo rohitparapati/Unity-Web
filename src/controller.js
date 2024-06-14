@@ -219,14 +219,16 @@ const carpentryservices = async (req, res) => {
             filter.Location = location;
         }
         const carpentries = await carpentry.find(filter);
+        const highlyRatedCarpentries = await carpentry.find({ Rating: { $gt: 4.0 } });
         const locations = await carpentry.distinct("Location");
         console.log(carpentries); // Check what is being returned here
-        res.render("carpentry", { carpentries: carpentries,locations: locations, selectedLocation: location });
+        res.render("carpentry", { carpentries: carpentries, highlyRatedCarpentries: highlyRatedCarpentries, locations: locations, selectedLocation: location });
     } catch (error) {
         console.error("Failed to fetch carpentry data:", error);
         res.status(500).send("Failed to fetch carpentry data: " + error.message);
     }
 };
+
 
 const paintingservices = async (req, res) => {
     const { location } = req.query; // Get the location from query parameters
