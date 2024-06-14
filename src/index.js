@@ -49,6 +49,9 @@ app.get("/moving", movingservices);
 app.get("/landscaping", landscapingservices);
 app.get("/roofing", roofingservices);
 app.get("/other", otherservices);
+
+app.get("/login", renderLogin);
+
 const port = 3002;
 app.listen(port, () => {
     console.log(`Server running on port: ${port}`);
