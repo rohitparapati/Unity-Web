@@ -567,3 +567,57 @@ footer {
 .spacer {
     height: 50px; /* Adjust this value to increase or decrease the space */
 }
+
+/* Styles for Filtered Painting Services Section */
+.filtered-painting {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-painting h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Painting Services Section */
+.highly-rated-painting {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-painting h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Filtered Cleaners Section */
+.filtered-cleaners {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-cleaners h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Cleaners Section */
+.highly-rated-cleaners {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-cleaners h2 {
+    text-align: center;
+    color: #333;
+}

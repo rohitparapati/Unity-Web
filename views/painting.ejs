@@ -35,26 +35,53 @@
     </form>
 
     <main id="services">
-        <ul>
-            <% paintvalue.forEach(function(paint) { %>
-                <li>
-                    <img src="/images/provider.jpg" alt="Provider Image">
-                    <div class="content">
-                        <h3><%= paint.BussinessName %></h3>
-                        <p><strong>Location:</strong> <%= paint.Location %></p>
-                        <p><strong>Rating:</strong> <%= paint.rating %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= paint._id %>')">View Details</button>
-                    </div>
-                    <div id="popup-<%= paint._id %>" class="popup">
-                        <h3><%= paint.BussinessName %></h3>
-                        <p><strong>Email:</strong> <%= paint.Email %></p>
-                        <p><strong>Contact:</strong> <%= paint.Contact %></p>
-                        <p><strong>Availability:</strong> <%= paint.Availability %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= paint._id %>')">Close</button>
-                    </div>
-                </li>
-            <% }); %>
-        </ul>
+        <div class="filtered-painting">
+            <h2>Filtered Painting Services</h2>
+            <ul>
+                <% paintvalue.forEach(function(paint) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= paint.BussinessName %></h3>
+                            <p><strong>Location:</strong> <%= paint.Location %></p>
+                            <p><strong>Rating:</strong> <%= paint.rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= paint._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-<%= paint._id %>" class="popup">
+                            <h3><%= paint.BussinessName %></h3>
+                            <p><strong>Email:</strong> <%= paint.Email %></p>
+                            <p><strong>Contact:</strong> <%= paint.Contact %></p>
+                            <p><strong>Availability:</strong> <%= paint.Availability %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= paint._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="highly-rated-painting">
+            <h2>Highly Rated Painting Services (Rating Above 4.0)</h2>
+            <ul>
+                <% highlyRatedPaint.forEach(function(paint) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= paint.BussinessName %></h3>
+                            <p><strong>Location:</strong> <%= paint.Location %></p>
+                            <p><strong>Rating:</strong> <%= paint.rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= paint._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-high-<%= paint._id %>" class="popup">
+                            <h3><%= paint.BussinessName %></h3>
+                            <p><strong>Email:</strong> <%= paint.Email %></p>
+                            <p><strong>Contact:</strong> <%= paint.Contact %></p>
+                            <p><strong>Availability:</strong> <%= paint.Availability %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= paint._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
     </main>
 </body>
 </html>
