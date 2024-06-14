@@ -475,3 +475,63 @@ footer {
     font-size: 0.9em;
     opacity: 0.8;
 }
+
+/* Styles for Filtered Plumbers Section */
+.filtered-plumbers {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-plumbers h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Plumbers Section */
+.highly-rated-plumbers {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-plumbers h2 {
+    text-align: center;
+    color: #333;
+}
+
+
+/* Styles for Filtered Electrical Services Section */
+.filtered-electrical {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-electrical h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Electrical Services Section */
+.highly-rated-electrical {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-electrical h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Additional CSS to add spacing between sections */
+.spacer {
+    height: 50px; /* Adjust this value to increase or decrease the space */
+}

@@ -176,13 +176,21 @@ const plumbingservices = async (req, res) => {
         }
         const plumbers = await Plumbing.find(filter);
         const locations = await Plumbing.distinct("Location");
+        const highlyRatedPlumbers = await Plumbing.find({ rating: { $gt: 4.0 } });
+
         console.log(plumbers); // Check what is being returned here
-        res.render("plumbing", { plumbers: plumbers,locations: locations, selectedLocation: location });
+        res.render("plumbing", { 
+            plumbers: plumbers,
+            locations: locations,
+            selectedLocation: location,
+            highlyRatedPlumbers: highlyRatedPlumbers 
+        });
     } catch (error) {
         console.error("Failed to fetch plumbing data:", error);
         res.status(500).send("Failed to fetch plumbing data: " + error.message);
     }
 };
+
 
 const electricalservices = async (req, res) => {
     const { location } = req.query; // Get the location from query parameters
@@ -193,13 +201,15 @@ const electricalservices = async (req, res) => {
         }
         const Electric = await electrical.find(filter);
         const locations = await electrical.distinct("Location");
+        const highlyRatedElectric = await electrical.find({ rating: { $gt: 4.0 } });
         console.log(Electric); // Check what is being returned here
-        res.render("electrical", { Electric: Electric,locations: locations, selectedLocation: location });
+        res.render("electrical", { Electric: Electric, locations: locations, selectedLocation: location, highlyRatedElectric: highlyRatedElectric });
     } catch (error) {
         console.error("Failed to fetch electric data:", error);
         res.status(500).send("Failed to fetch electric data: " + error.message);
     }
 };
+
 
 const carpentryservices = async (req, res) => {
     const { location } = req.query; // Get the location from query parameters

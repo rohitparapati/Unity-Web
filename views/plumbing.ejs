@@ -35,29 +35,59 @@
     </form>
 
     <main id="services">
-        <ul>
-            <% plumbers.forEach(function(plumber) { %>
-                <li>
-                    <img src="/images/provider.jpg" alt="Provider Image">
-                    <div class="content">
-                        <h3><%= plumber.BusinessName %></h3>
-                        <p><strong>Location:</strong> <%= plumber.Location %></p>
-                        <p><strong>Rating:</strong> <%= plumber.rating %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= plumber._id %>')">View Details</button>
-                    </div>
-                    <div id="popup-<%= plumber._id %>" class="popup">
-                        <h3><%= plumber.BusinessName %></h3>
-                        <p><strong>Email:</strong> <%= plumber.Email %></p>
-                        <p><strong>Contact:</strong> <%= plumber.Contact %></p>
-                        <p><strong>Availability:</strong> <%= plumber.Availability %></p>
-                        <% if (plumber.Serviceinfo) { %>
-                            <p><strong>Service Information:</strong> <%= plumber.Serviceinfo %></p>
-                        <% } %>
-                        <button class="service-link" onclick="togglePopup('popup-<%= plumber._id %>')">Close</button>
-                    </div>
-                </li>
-            <% }); %>
-        </ul>
+        <section class="filtered-plumbers">
+            <h2>Filtered Plumbers</h2>
+            <ul>
+                <% plumbers.forEach(function(plumber) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= plumber.BusinessName %></h3>
+                            <p><strong>Location:</strong> <%= plumber.Location %></p>
+                            <p><strong>Rating:</strong> <%= plumber.rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= plumber._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-<%= plumber._id %>" class="popup">
+                            <h3><%= plumber.BusinessName %></h3>
+                            <p><strong>Email:</strong> <%= plumber.Email %></p>
+                            <p><strong>Contact:</strong> <%= plumber.Contact %></p>
+                            <p><strong>Availability:</strong> <%= plumber.Availability %></p>
+                            <% if (plumber.Serviceinfo) { %>
+                                <p><strong>Service Information:</strong> <%= plumber.Serviceinfo %></p>
+                            <% } %>
+                            <button class="service-link" onclick="togglePopup('popup-<%= plumber._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </section>
+
+        <section class="highly-rated-plumbers">
+            <h2>Recommend services with high rating</h2>
+            <ul>
+                <% highlyRatedPlumbers.forEach(function(plumber) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= plumber.BusinessName %></h3>
+                            <p><strong>Location:</strong> <%= plumber.Location %></p>
+                            <p><strong>Rating:</strong> <%= plumber.rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= plumber._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-high-<%= plumber._id %>" class="popup">
+                            <h3><%= plumber.BusinessName %></h3>
+                            <p><strong>Email:</strong> <%= plumber.Email %></p>
+                            <p><strong>Contact:</strong> <%= plumber.Contact %></p>
+                            <p><strong>Availability:</strong> <%= plumber.Availability %></p>
+                            <% if (plumber.Serviceinfo) { %>
+                                <p><strong>Service Information:</strong> <%= plumber.Serviceinfo %></p>
+                            <% } %>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= plumber._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </section>
     </main>
 </body>
 </html>

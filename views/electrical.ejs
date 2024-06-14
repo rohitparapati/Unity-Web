@@ -35,27 +35,55 @@
     </form>
 
     <main id="services">
-        <ul>
-            <% Electric.forEach(function(electronic) { %>
-                <li>
-                    <img src="/images/provider.jpg" alt="Provider Image">
-                    <div class="content">
-                        <h3><%= electronic.BussinessName %></h3>
-                        <p><strong>Location:</strong> <%= electronic.Location %></p>
-                        <p><strong>Rating:</strong> <%= electronic.rating %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= electronic._id %>')">View Details</button>
-                    </div>
-                    <div id="popup-<%= electronic._id %>" class="popup">
-                        <h3><%= electronic.BussinessName %></h3>
-                        <p><strong>Email:</strong> <%= electronic.Email %></p>
-                        <p><strong>Contact:</strong> <%= electronic.Contact %></p>
-                        <p><strong>Availability:</strong> <%= electronic.Availability %></p>
-                        <p><strong>Service Information:</strong> <%= electronic.Serviceinfo %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= electronic._id %>')">Close</button>
-                    </div>
-                </li>
-            <% }); %>
-        </ul>
+        <div class="filtered-electrical">
+            <h2>Filtered Electrical Services</h2>
+            <ul>
+                <% Electric.forEach(function(electronic) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= electronic.BussinessName %></h3>
+                            <p><strong>Location:</strong> <%= electronic.Location %></p>
+                            <p><strong>Rating:</strong> <%= electronic.rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= electronic._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-<%= electronic._id %>" class="popup">
+                            <h3><%= electronic.BussinessName %></h3>
+                            <p><strong>Email:</strong> <%= electronic.Email %></p>
+                            <p><strong>Contact:</strong> <%= electronic.Contact %></p>
+                            <p><strong>Availability:</strong> <%= electronic.Availability %></p>
+                            <p><strong>Service Information:</strong> <%= electronic.Serviceinfo %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= electronic._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="highly-rated-electrical">
+            <h2>Recommend services with high rating</h2>
+            <ul>
+                <% highlyRatedElectric.forEach(function(electronic) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= electronic.BussinessName %></h3>
+                            <p><strong>Location:</strong> <%= electronic.Location %></p>
+                            <p><strong>Rating:</strong> <%= electronic.rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= electronic._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-high-<%= electronic._id %>" class="popup">
+                            <h3><%= electronic.BussinessName %></h3>
+                            <p><strong>Email:</strong> <%= electronic.Email %></p>
+                            <p><strong>Contact:</strong> <%= electronic.Contact %></p>
+                            <p><strong>Availability:</strong> <%= electronic.Availability %></p>
+                            <p><strong>Service Information:</strong> <%= electronic.Serviceinfo %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= electronic._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
     </main>
 </body>
 </html>
