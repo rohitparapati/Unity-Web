@@ -51,6 +51,9 @@ app.get("/roofing", roofingservices);
 app.get("/other", otherservices);
 
 app.get("/login", renderLogin);
+app.get("/home", (req, res) => {
+    res.render('home');
+});
 
 const port = 3002;
 app.listen(port, () => {
