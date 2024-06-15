@@ -21,6 +21,20 @@ nav {
     height: 40px;
     border-radius: 50%;
 }
+.navbar-right .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 50px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-right .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 8px;
+}
+s
 
 
 main {
