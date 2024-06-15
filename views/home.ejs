@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body class="home-page">
+    <%- include('_navbar') %>
     <main>
         <!-- Home -->
         <div id="home">
@@ -14,7 +15,7 @@
           <p>Get quick and reliable services for all your needs.</p>
           <a href="#services" class="btn">Browse Services</a>
         </div>
-    
+
         <!-- Services -->
         <div id="services">
           <h2>Browse Services</h2>
@@ -22,7 +23,6 @@
             <li>
               <img src="images/plumbing.jpg" alt="Plumbing">
               <a href="/plumbing" class="service-link">Plumbing</a>
-
             </li>
             <li>
               <img src="images/electrical.jpg" alt="Electrical">
@@ -59,8 +59,6 @@
           </ul>
           <a href="/register" class="btn">Registration form for service providers</a>
         </div>
-
-      </main>
-    
+    </main>
 </body>
 </html>
