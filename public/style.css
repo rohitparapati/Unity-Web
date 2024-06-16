@@ -669,3 +669,34 @@ footer {
     text-align: center;
     color: #333;
 }
+/* Styles for Filtered Moving Services Section */
+.filtered-moving {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-moving h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Moving Services Section */
+.highly-rated-moving {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-moving h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Additional CSS to add spacing between sections */
+.spacer {
+    height: 50px; /* Adjust this value to increase or decrease the space */
+}

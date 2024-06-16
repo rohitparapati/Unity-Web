@@ -279,14 +279,16 @@ const movingservices = async (req, res) => {
             filter.Location = location;
         }
         const movers = await moving.find(filter);
+        const highlyRatedMovers = await moving.find({ Rating: { $gt: 4.0 } });
         const locations = await moving.distinct("Location");
         console.log(movers); // Check what is being returned here
-        res.render("moving", { movers: movers ,locations: locations, selectedLocation: location});
+        res.render("moving", { movers: movers, highlyRatedMovers: highlyRatedMovers, locations: locations, selectedLocation: location });
     } catch (error) {
         console.error("Failed to fetch Moving data:", error);
         res.status(500).send("Failed to fetch Moving data: " + error.message);
     }
 };
+
 
 const landscapingservices = async (req, res) => {
     const { location } = req.query; // Get the location from query parameters
