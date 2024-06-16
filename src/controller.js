@@ -298,14 +298,16 @@ const landscapingservices = async (req, res) => {
             filter.Location = location;
         }
         const lands = await landscaping.find(filter);
+        const highlyRatedLands = await landscaping.find({ Rating: { $gt: 4.0 } });
         const locations = await landscaping.distinct("Location");
         console.log(lands); // Check what is being returned here
-        res.render("landscaping", { lands: lands,locations: locations, selectedLocation: location });
+        res.render("landscaping", { lands: lands, highlyRatedLands: highlyRatedLands, locations: locations, selectedLocation: location });
     } catch (error) {
         console.error("Failed to fetch LandScaping data:", error);
         res.status(500).send("Failed to fetch landscaping data: " + error.message);
     }
 };
+
 
 
 

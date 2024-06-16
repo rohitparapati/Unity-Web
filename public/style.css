@@ -700,3 +700,32 @@ footer {
 .spacer {
     height: 50px; /* Adjust this value to increase or decrease the space */
 }
+
+
+/* Styles for Filtered Landscaping Services Section */
+.filtered-landscaping {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-landscaping h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Landscaping Services Section */
+.highly-rated-landscaping {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-landscaping h2 {
+    text-align: center;
+    color: #333;
+}
+

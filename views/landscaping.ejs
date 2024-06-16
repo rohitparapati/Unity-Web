@@ -36,26 +36,53 @@
     </form>
 
     <main id="services">
-        <ul>
-            <% lands.forEach(function(landvalue) { %>
-                <li>
-                    <img src="/images/provider.jpg" alt="Provider Image">
-                    <div class="content">
-                        <h3><%= landvalue.ServiceName %></h3>
-                        <p><strong>Location:</strong> <%= landvalue.Location %></p>
-                        <p><strong>Rating:</strong> <%= landvalue.Rating %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= landvalue._id %>')">View Details</button>
-                    </div>
-                    <div id="popup-<%= landvalue._id %>" class="popup">
-                        <h3><%= landvalue.ServiceName %></h3>
-                        <p><strong>Email:</strong> <%= landvalue.Email %></p>
-                        <p><strong>Contact:</strong> <%= landvalue.Contact %></p>
-                        <p><strong>Availability:</strong> <%= landvalue.Availability %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= landvalue._id %>')">Close</button>
-                    </div>
-                </li>
-            <% }); %>
-        </ul>
+        <div class="filtered-landscaping">
+            <h2>Filtered Landscaping Services</h2>
+            <ul>
+                <% lands.forEach(function(landvalue) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= landvalue.ServiceName %></h3>
+                            <p><strong>Location:</strong> <%= landvalue.Location %></p>
+                            <p><strong>Rating:</strong> <%= landvalue.Rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= landvalue._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-<%= landvalue._id %>" class="popup">
+                            <h3><%= landvalue.ServiceName %></h3>
+                            <p><strong>Email:</strong> <%= landvalue.Email %></p>
+                            <p><strong>Contact:</strong> <%= landvalue.Contact %></p>
+                            <p><strong>Availability:</strong> <%= landvalue.Availability %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= landvalue._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="highly-rated-landscaping">
+            <h2>Highly Rated Landscaping Services (Rating Above 4.0)</h2>
+            <ul>
+                <% highlyRatedLands.forEach(function(landvalue) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= landvalue.ServiceName %></h3>
+                            <p><strong>Location:</strong> <%= landvalue.Location %></p>
+                            <p><strong>Rating:</strong> <%= landvalue.Rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= landvalue._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-high-<%= landvalue._id %>" class="popup">
+                            <h3><%= landvalue.ServiceName %></h3>
+                            <p><strong>Email:</strong> <%= landvalue.Email %></p>
+                            <p><strong>Contact:</strong> <%= landvalue.Contact %></p>
+                            <p><strong>Availability:</strong> <%= landvalue.Availability %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= landvalue._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
     </main>
     <%- include('scroll.js.ejs') %>
 </body>
