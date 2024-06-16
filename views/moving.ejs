@@ -20,6 +20,7 @@
     </script>
 </head>
 <body class="service-list">
+    <%- include('_navbar') %>
     <div id="overlay"></div>
 
     <h1>Moving Services</h1>
@@ -35,26 +36,54 @@
     </form>
 
     <main id="services">
-        <ul>
-            <% movers.forEach(function(movingvalue) { %>
-                <li>
-                    <img src="/images/provider.jpg" alt="Provider Image">
-                    <div class="content">
-                        <h3><%= movingvalue.ServiceName %></h3>
-                        <p><strong>Location:</strong> <%= movingvalue.Location %></p>
-                        <p><strong>Rating:</strong> <%= movingvalue.Rating %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= movingvalue._id %>')">View Details</button>
-                    </div>
-                    <div id="popup-<%= movingvalue._id %>" class="popup">
-                        <h3><%= movingvalue.ServiceName %></h3>
-                        <p><strong>Email:</strong> <%= movingvalue.Email %></p>
-                        <p><strong>Contact:</strong> <%= movingvalue.Contact %></p>
-                        <p><strong>Availability:</strong> <%= movingvalue.Availability %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= movingvalue._id %>')">Close</button>
-                    </div>
-                </li>
-            <% }); %>
-        </ul>
+        <div class="filtered-moving">
+            <h2>Filtered Moving Services</h2>
+            <ul>
+                <% movers.forEach(function(movingvalue) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= movingvalue.ServiceName %></h3>
+                            <p><strong>Location:</strong> <%= movingvalue.Location %></p>
+                            <p><strong>Rating:</strong> <%= movingvalue.Rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= movingvalue._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-<%= movingvalue._id %>" class="popup">
+                            <h3><%= movingvalue.ServiceName %></h3>
+                            <p><strong>Email:</strong> <%= movingvalue.Email %></p>
+                            <p><strong>Contact:</strong> <%= movingvalue.Contact %></p>
+                            <p><strong>Availability:</strong> <%= movingvalue.Availability %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= movingvalue._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+        <div class="highly-rated-moving">
+            <h2>Recommend services with high rating</h2>
+            <ul>
+                <% highlyRatedMovers.forEach(function(movingvalue) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= movingvalue.ServiceName %></h3>
+                            <p><strong>Location:</strong> <%= movingvalue.Location %></p>
+                            <p><strong>Rating:</strong> <%= movingvalue.Rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= movingvalue._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-high-<%= movingvalue._id %>" class="popup">
+                            <h3><%= movingvalue.ServiceName %></h3>
+                            <p><strong>Email:</strong> <%= movingvalue.Email %></p>
+                            <p><strong>Contact:</strong> <%= movingvalue.Contact %></p>
+                            <p><strong>Availability:</strong> <%= movingvalue.Availability %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= movingvalue._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
     </main>
+    <%- include('scroll.js.ejs') %>
 </body>
 </html>

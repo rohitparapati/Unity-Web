@@ -1,4 +1,51 @@
-/* Common styles for all pages updated-------------*/
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navbar styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #2c3e50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-left .logo {
+    height: 40px; /* Increase the height to make the logo bigger */
+    border-radius: 50%;
+    filter: brightness(1.5);
+}
+
+.navbar-right .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 50px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar-right .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 8px;
+}
+
+main {
+    padding-top: 80px; /* Adjust based on the height of the navbar */
+}
+
+/* Common styles for all pages updated */
 html, body {
     height: 100%;
     margin: 0;
@@ -48,6 +95,7 @@ main {
 .home-page .btn:hover {
     background-color: #2980b9;
 }
+
 
 /* Services section */
 #services {
@@ -535,3 +583,149 @@ footer {
 .spacer {
     height: 50px; /* Adjust this value to increase or decrease the space */
 }
+
+/* Styles for Filtered Carpentry Services Section */
+.filtered-carpentry {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-carpentry h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Carpentry Services Section */
+.highly-rated-carpentry {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-carpentry h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Additional CSS to add spacing between sections */
+.spacer {
+    height: 50px; /* Adjust this value to increase or decrease the space */
+}
+
+/* Styles for Filtered Painting Services Section */
+.filtered-painting {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-painting h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Painting Services Section */
+.highly-rated-painting {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-painting h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Filtered Cleaners Section */
+.filtered-cleaners {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-cleaners h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Cleaners Section */
+.highly-rated-cleaners {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-cleaners h2 {
+    text-align: center;
+    color: #333;
+}
+/* Styles for Filtered Moving Services Section */
+.filtered-moving {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-moving h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Moving Services Section */
+.highly-rated-moving {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-moving h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Additional CSS to add spacing between sections */
+.spacer {
+    height: 50px; /* Adjust this value to increase or decrease the space */
+}
+
+
+/* Styles for Filtered Landscaping Services Section */
+.filtered-landscaping {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-landscaping h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Landscaping Services Section */
+.highly-rated-landscaping {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-landscaping h2 {
+    text-align: center;
+    color: #333;
+}
+
