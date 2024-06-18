@@ -37,8 +37,7 @@ workflows:
   version: 2
   all_commits:
     jobs:
-      - test:
+      - test_cases:
       - build_and_deploy:
-          filters:
-            branches:
-              only: main
+          requires:
+            - test
