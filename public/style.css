@@ -891,3 +891,31 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+
+/* Styles for Filtered Roofing Services Section */
+.filtered-roofing {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filtered-roofing h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styles for Highly Rated Roofing Services Section */
+.highly-rated-roofing {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.highly-rated-roofing h2 {
+    text-align: center;
+    color: #333;
+}

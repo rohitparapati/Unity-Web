@@ -319,14 +319,16 @@ const roofingservices = async (req, res) => {
             filter.Location = location;
         }
         const roofs = await Roofing.find(filter);
+        const highlyRatedRoofs = await Roofing.find({ Rating: { $gt: 4.0 } });
         const locations = await Roofing.distinct("Location");
         console.log(roofs); // Check what is being returned here
-        res.render("roofing", { roofs: roofs ,locations: locations, selectedLocation: location});
+        res.render("roofing", { roofs: roofs, highlyRatedRoofs: highlyRatedRoofs, locations: locations, selectedLocation: location });
     } catch (error) {
         console.error("Failed to fetch roofing data:", error);
         res.status(500).send("Failed to fetch roofing data: " + error.message);
     }
 };
+
 
 const otherservices = async (req, res) => {
     const { location } = req.query; // Get the location from query parameters
