@@ -49,7 +49,7 @@ To set up your development environment for Unity Web, follow these steps:
 ## Installation
 
 Clone the repository:
-```bash
+
 git clone https://github.com/rgangineni02/CSCI-5030-Project.git
 
 Install dependencies:
@@ -81,4 +81,6 @@ Start the server:
 nodemon src/index.js
 Access the application via the web browser:
 http://localhost:3002
+
+
 
