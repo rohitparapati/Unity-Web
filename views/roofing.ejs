@@ -35,31 +35,54 @@
         </select>
     </form>
 
-    
     <main id="services">
+        <div class="filtered-roofing">
+            <h2>Filtered Roofing Services</h2>
+            <ul>
+                <% roofs.forEach(function(roofvalue) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= roofvalue.ServiceName %></h3>
+                            <p><strong>Location:</strong> <%= roofvalue.Location %></p>
+                            <p><strong>Rating:</strong> <%= roofvalue.Rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= roofvalue._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-<%= roofvalue._id %>" class="popup">
+                            <h3><%= roofvalue.ServiceName %></h3>
+                            <p><strong>Email:</strong> <%= roofvalue.Email %></p>
+                            <p><strong>Contact:</strong> <%= roofvalue.Contact %></p>
+                            <p><strong>Availability:</strong> <%= roofvalue.Availability %></p>
+                            <button class="service-link" onclick="togglePopup('popup-<%= roofvalue._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
 
-
-
-        <ul>
-            <% roofs.forEach(function(roofvalue) { %>
-                <li>
-                    <img src="/images/provider.jpg" alt="Provider Image">
-                    <div class="content">
-                        <h3><%= roofvalue.ServiceName %></h3>
-                        <p><strong>Location:</strong> <%= roofvalue.Location %></p>
-                        <p><strong>Rating:</strong> <%= roofvalue.Rating %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= roofvalue._id %>')">View Details</button>
-                    </div>
-                    <div id="popup-<%= roofvalue._id %>" class="popup">
-                        <h3><%= roofvalue.ServiceName %></h3>
-                        <p><strong>Email:</strong> <%= roofvalue.Email %></p>
-                        <p><strong>Contact:</strong> <%= roofvalue.Contact %></p>
-                        <p><strong>Availability:</strong> <%= roofvalue.Availability %></p>
-                        <button class="service-link" onclick="togglePopup('popup-<%= roofvalue._id %>')">Close</button>
-                    </div>
-                </li>
-            <% }); %>
-        </ul>
+        <div class="highly-rated-roofing">
+            <h2>Highly Rated Roofing Services (Rating Above 4.0)</h2>
+            <ul>
+                <% highlyRatedRoofs.forEach(function(roofvalue) { %>
+                    <li>
+                        <img src="/images/provider.jpg" alt="Provider Image">
+                        <div class="content">
+                            <h3><%= roofvalue.ServiceName %></h3>
+                            <p><strong>Location:</strong> <%= roofvalue.Location %></p>
+                            <p><strong>Rating:</strong> <%= roofvalue.Rating %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= roofvalue._id %>')">View Details</button>
+                        </div>
+                        <div id="popup-high-<%= roofvalue._id %>" class="popup">
+                            <h3><%= roofvalue.ServiceName %></h3>
+                            <p><strong>Email:</strong> <%= roofvalue.Email %></p>
+                            <p><strong>Contact:</strong> <%= roofvalue.Contact %></p>
+                            <p><strong>Availability:</strong> <%= roofvalue.Availability %></p>
+                            <button class="service-link" onclick="togglePopup('popup-high-<%= roofvalue._id %>')">Close</button>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
     </main>
     <%- include('scroll.js.ejs') %>
 </body>
