@@ -78,13 +78,15 @@ http://localhost:3002
 
 ##Pulling the Docker Image
 Download the Docker image from Docker Hub to your local machine:
+
 docker pull ravaligangineni/my-unity-web:v1
+
 This command retrieves version v1 of the my-unity-web Docker image from the Docker Hub account ravaligangineni
 
 ##Running the Docker Image
 Once the image is pulled, run it on your local machine using
 
-  docker run -p 4000:3002 ravaligangineni/my-unity-web:v1
+docker run -p 4000:3002 ravaligangineni/my-unity-web:v1
 
 docker run: This command tells Docker to run a container from the specified image.
 
