@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  test:
+  test_cases:
     docker:
       - image: cimg/node:14.17 # Use the official CircleCI Node.js image
     steps:
@@ -35,9 +35,10 @@ jobs:
 
 workflows:
   version: 2
-  all_commits:
+  Test_cases and Auto Deploy:
     jobs:
-      - test
+      - test_cases:
       - build_and_deploy:
-          requires:
-            - test
+          filters:
+            branches:
+              only: main
