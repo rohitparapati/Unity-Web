@@ -59,6 +59,7 @@ git clone https://github.com/rgangineni02/CSCI-5030-Project.git
 -npm install bcrypt 
 -npm install ejs
 -npm install nodemailer
+-npm install --save-dev jest
 
 
 ## Testing
