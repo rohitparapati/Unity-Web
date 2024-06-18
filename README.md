@@ -52,7 +52,7 @@ Clone the repository:
 
 git clone https://github.com/rgangineni02/CSCI-5030-Project.git
 
-Install dependencies:
+## Install dependencies:
 -npm install
 -npm install express 
 -npm install mongoose 
@@ -61,9 +61,20 @@ Install dependencies:
 -npm install nodemailer
 
 
-##Testing
+## Testing
 To run tests, use the following command:
 npm test
+
+
+##S tart the server:
+nodemon src/index.js
+
+Access the application via the web browser:
+http://localhost:3002
+
+![image](https://github.com/rgangineni02/CSCI-5030-Project/assets/152373497/aa95bc07-f3e3-4576-87ae-2c9f6fda8d19)
+
+
 
 ##Pulling the Docker Image
 Download the Docker image from Docker Hub to your local machine:
@@ -72,15 +83,16 @@ This command retrieves version v1 of the my-unity-web Docker image from the Dock
 
 ##Running the Docker Image
 Once the image is pulled, run it on your local machine using
+
 docker run -p 4000:3002 ravaligangineni/my-unity-web:v1
+
 docker run: This command tells Docker to run a container from the specified image.
+
 -p 4000:3002: This flag maps port 4000 on your local machine to port 3002 inside the Docker container, allowing you to access the application by visiting http://localhost:4000 in your web browser.
+
 ravaligangineni/my-unity-web:v1: Specifies the image to use, including the username, repository, and tag.
 
-Start the server:
-nodemon src/index.js
-Access the application via the web browser:
-http://localhost:3002
+
 
 
 
