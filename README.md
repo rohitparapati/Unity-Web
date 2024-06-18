@@ -84,7 +84,7 @@ This command retrieves version v1 of the my-unity-web Docker image from the Dock
 ##Running the Docker Image
 Once the image is pulled, run it on your local machine using
 
-docker run -p 4000:3002 ravaligangineni/my-unity-web:v1
+  docker run -p 4000:3002 ravaligangineni/my-unity-web:v1
 
 docker run: This command tells Docker to run a container from the specified image.
 
